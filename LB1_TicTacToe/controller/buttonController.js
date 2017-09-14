@@ -70,3 +70,9 @@ function checkEmail(email, btn){
     var p = (regex.test(email)) ? 'emailValid' : 'emailInvalid';
     addClass(btn,  s);
 }
+
+function onloadEvent() {
+    getButtons();
+    changeButtonState(false);
+
+}

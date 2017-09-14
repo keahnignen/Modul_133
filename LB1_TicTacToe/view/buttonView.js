@@ -17,3 +17,18 @@ function noBodyWon()
 function addClass(btn, s) {
     btn.className = s;
 }
+
+function changeButtonState(b) {
+
+}
+
+function getButtons() {
+    var array = [];
+    for(var i = 0; i < 3; i++)
+    {
+        for(var j = 0; j < 3; j++)
+        {
+
+        }
+    }
+}
