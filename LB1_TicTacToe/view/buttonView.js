@@ -6,10 +6,14 @@ function changeColor(button, className) {
 
 function someoneWon(player)
 {
-    document.getElementById("winner").textContent = player + " won!";
+    document.getElementById("winner").textContent = document.getElementById(player) + " won!";
 }
 
 function noBodyWon()
 {
     document.getElementById("winner").textContent = "Draw";
+}
+
+function addClass(btn, s) {
+    btn.className = s;
 }

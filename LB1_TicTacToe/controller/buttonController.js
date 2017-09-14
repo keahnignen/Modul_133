@@ -16,19 +16,41 @@ function buttonClick(button) {
 
 function checkIfSomeWon()
 {
+    var counter = 0;
+    array.forEach(function(t) {
+        t.forEach(function() {
+            counter++;
+        });
+    });
+    if (!counter > 4)
+    {
+        return;
+    }
+    if (counter === 9)
+    {
+        noBodyWon();
+        return;
+    }
 
     for (var x = 0; x <= 2; x++)
     {
-        if (array[x][0] == array[x][1] && array[x][1] == array[x][2]) someoneWon(array[x][0]);
+
+        if (areTheyTheSame(x, 0, x, 1) && areTheyTheSame(x, 1, x, 2)) someoneWon(array[x][0]);
     }
 
-    if (array.length == 9)
-    {
-        noBodyWon();
-    }
 }
 
+function areTheyTheSame(x1, y1, x2, y2) {
+    return (doesTheyExist(x1, y1, x2, y2) && array[x1][y1] === array[x2][y2]);
+}
 
+function doesTheyExist(x1, y1, x2, y2) {
+    return (itExist(x1, y1) && itExist(x2, y2));
+}
+
+function itExist(x, y) {
+    return (array[x] !== undefined && array[x][y] !== undefined);
+}
 
 function registerInArray(button) {
     //Lazy initalization (damn javascript)
@@ -40,4 +62,11 @@ function registerInArray(button) {
 
 function clickIsInvalid() {
     return false;
+}
+
+function checkEmail(email, btn){
+
+    var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var p = (regex.test(email)) ? 'emailValid' : 'emailInvalid';
+    addClass(btn,  s);
 }
