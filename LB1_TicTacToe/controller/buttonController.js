@@ -6,8 +6,10 @@ var activePlayer;
 var array = [];
 
 function buttonClick(button) {
+    if (clickIsInvalid()) return;
     activePlayer = (playerOnesTurn) ? playerOne : playerTwo;
     changeColor(button, activePlayer);
+    registerInArray(button);
     checkIfSomeWon();
     playerOnesTurn = !playerOnesTurn;
 }
@@ -21,6 +23,9 @@ function checkIfSomeWon()
     }
 
     if (array.length == 9)
+    {
+        noBodyWon();
+    }
 }
 
 
@@ -31,4 +36,8 @@ function registerInArray(button) {
     var y = parseInt(button.textContent.substr(1, 1));
     if (!array[x]) array[x] = [];
     array[x][y] = activePlayer;
+}
+
+function clickIsInvalid() {
+    return false;
 }
