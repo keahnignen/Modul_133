@@ -1,0 +1,47 @@
+
+<script src='view\buttonView.js'></script>
+<script src="controller\buttonController.js"></script>
+
+<h1>Tic Tac Toe</h1>
+<section>
+    <div>
+        <button type="button" onclick="buttonClick(this)">00</button>
+        <button type="button" onclick="buttonClick(this)">01</button>
+        <button type="button" onclick="buttonClick(this)">02</button>
+    </div>
+    <div>
+        <button type="button" onclick="buttonClick(this)">10</button>
+        <button type="button" onclick="buttonClick(this)">11</button>
+        <button type="button" onclick="buttonClick(this)">12</button>
+    </div>
+    <div>
+        <button type="button" onclick="buttonClick(this)">20</button>
+        <button type="button" onclick="buttonClick(this)">21</button>
+        <button type="button" onclick="buttonClick(this)">22</button>
+    </div>
+</section>
+
+<section>
+    <input type="radio" id="pvp" name="gameMode" value="pvp">
+    <label for="pvp">Mensch vs Mensch</label>
+    <div class="indent">
+        <input name="emailOne" placeholder="i@am.batman"><br>
+        <input name="emailTwo" placeholder="i@ilke.trains">
+    </div>
+</section>
+<section>
+    <input type="radio" id="pvm" name="gameMode" value="pvm">
+    <label for="pvm">Mensch vs Maschine</label>
+    <div class="indent">
+        <input name="emailOne" placeholder="why@so.serious">
+    </div>
+</section>
+<section>
+    <input type="radio" id="mvm" name="gameMode" value="mvm">
+    <label for="mvm">Maschine vs Maschine</label>
+    <div class="indent">
+        <input name="emailOne" placeholder="i@am.batman"><br>
+        <input name="emailTwo" placeholder="i@ilke.trains">
+    </div>
+</section>
+<label id="winner"></label>
