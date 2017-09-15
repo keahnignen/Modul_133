@@ -14,6 +14,7 @@ function noBodyWon()
     document.getElementById("winner").textContent = "Draw";
 }
 
+/*
 function addClass(btn, s) {
     btn.className = s;
 }
@@ -21,14 +22,4 @@ function addClass(btn, s) {
 function changeButtonState(b) {
 
 }
-
-function getButtons() {
-    var array = [];
-    for(var i = 0; i < 3; i++)
-    {
-        for(var j = 0; j < 3; j++)
-        {
-
-        }
-    }
-}
+*/

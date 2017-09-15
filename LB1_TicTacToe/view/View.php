@@ -16,12 +16,12 @@ class View {
 
     private function getLayout()
     {
-        return file_get_contents('view\layout.html');
+        return file_get_contents('view\Layout.html');
     }
 
     private function getContent()
     {
-        return file_get_contents('view\ticTacToe.html');
+        return file_get_contents('view\TicTacToe.html');
     }
 
 }
