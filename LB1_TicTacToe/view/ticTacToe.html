@@ -6,28 +6,29 @@
 <section id="TicTacToe" onload="onloadEvent()">
     <script src='view\TicTacToeButtons.js'></script>
 </section>
-
-<section>
-    <input type="radio" id="pvp" name="gameMode" value="pvp">
-    <label for="pvp">Mensch vs Mensch</label>
-    <div class="indent">
-        <input onload="checkEmail()" id="playerOne" name="emailOne" placeholder="i@am.batman"><br>
-        <input onload="checkEmail()" id="playerTwo" name="emailTwo" placeholder="i@ilke.trains">
-    </div>
-</section>
-<section>
-    <input type="radio" id="pvm" name="gameMode" value="pvm">
-    <label for="pvm">Mensch vs Maschine</label>
-    <div class="indent">
-        <input onload="checkEmail()" name="emailOne" placeholder="why@so.serious">
-    </div>
-</section>
-<section>
-    <input type="radio" id="mvm" name="gameMode" value="mvm">
-    <label for="mvm">Maschine vs Maschine</label>
-</section>
-<section>
-    <button onclick="location.reload()" type="button">Reset</button>
-    <button type="button">Submit</button>
-</section>
+<div id="inputFields">
+    <section>
+        <input type="radio" id="pvp" name="gameMode" value="pvp" checked>
+        <label for="pvp">Mensch vs Mensch</label>
+        <div class="indent">
+            <input onload="checkEmail()" id="playerTwo" name="emailOne" placeholder="i@am.batman"><br>
+            <input onload="checkEmail()" id="playerOne" name="emailTwo" placeholder="why@so.serious">
+        </div>
+    </section>
+    <section>
+        <input type="radio" id="pvm" name="gameMode" value="pvm">
+        <label for="pvm">Mensch vs Maschine</label>
+        <div class="indent">
+            <input onload="checkEmail()" id="playerThree" name="emailThree" placeholder="i@ilke.trains">
+        </div>
+    </section>
+    <section>
+        <input type="radio" id="mvm" name="gameMode" value="mvm">
+        <label for="mvm">Maschine vs Maschine</label>
+    </section>
+</div>
+    <section>
+        <button onclick="location.reload()" type="button">Reset</button>
+        <button onclick="" type="button">Start</button>
+    </section>
 <label id="winner"></label>

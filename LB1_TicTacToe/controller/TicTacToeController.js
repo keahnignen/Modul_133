@@ -1,4 +1,3 @@
-
 var playerOnesTurn = true;
 var playerOne = 'playerOne';
 var playerTwo = 'playerTwo';
@@ -72,17 +71,5 @@ function checkIfSomeWon()
 function displayWinnerAndDisableButton(winner) {
     displayWinner(winner);
     changeState(buttonArray, true);
-}
-
-function clickIsInvalid() {
-    return false;
-}
-
-
-function checkEmail(textBox){
-
-    var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    var p = (regex.test(textBox.textContent)) ? 'emailValid' : 'emailInvalid';
-    addClass(textBox,  p);
 }
 

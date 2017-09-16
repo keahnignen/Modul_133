@@ -10,9 +10,7 @@ function loadScript(path) {
 
 
 function onloadEvent() {
-    alert('swag');
     getArrayOfNewButtons();
-
 }
 
-window.onload = onloadEvent ;
+window.onload = onloadEvent;
