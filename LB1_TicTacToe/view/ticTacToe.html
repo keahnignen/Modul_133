@@ -1,9 +1,9 @@
 
 <script src='view\View.js'></script>
-<script src="controller\Controller.js"></script>
+<script src="controller\MainController.js"></script>
 
 <h1>Tic Tac Toe</h1>
-<section onload="onloadEvent()">
+<section id="TicTacToe" onload="onloadEvent()">
     <script src='view\TicTacToeButtons.js'></script>
 </section>
 
@@ -25,5 +25,9 @@
 <section>
     <input type="radio" id="mvm" name="gameMode" value="mvm">
     <label for="mvm">Maschine vs Maschine</label>
+</section>
+<section>
+    <button onclick="location.reload()" type="button">Reset</button>
+    <button type="button">Submit</button>
 </section>
 <label id="winner"></label>

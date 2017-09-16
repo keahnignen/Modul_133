@@ -1,26 +1,26 @@
-
-
-getArrayOfNewButtons();
-
 function getArrayOfNewButtons() {
     var array = [];
     var notAssigned = "NotAssigned";
     for(var i = 0; i < 3; i++)
     {
         if (!array[i]) array[i] = [];
-        document.write('<div>');
+        var div = document.createElement("DIV");
         for(var j = 0; j < 3; j++)
         {
-            document.write("<button id=\"" + j + "y"+ i + "\" type=\"button\" onclick=\"buttonClick(this)\"></button>");
+            var button = document.createElement("BUTTON");
+            button.id = getIdByIndex(i, j);
+            button.onclick =  function() { buttonClick(this); };
+            button.className = "tictactoebutton";
             array[i][j] = notAssigned;
+            div.appendChild(button);
         }
-        document.write('</div>');
+        document.getElementById('TicTacToe').appendChild(div);
     }
     changeState(array, true);
     parseArray(array, notAssigned);
 
 }
 
-function changeState(list, b) {
-    getListOfButton(list).forEach(function (t) { t.disabled = b; })
+function changeState(list, willDisabled) {
+    getListOfButton(list).forEach(function (t) { t.disabled = willDisabled; })
 }

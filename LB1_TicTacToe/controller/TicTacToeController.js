@@ -17,40 +17,12 @@ function buttonClick(button) {
     if (clickIsInvalid()) return;
     round++;
     activePlayer = (playerOnesTurn) ? playerOne : playerTwo;
-    var index = button.id.split("y");
-    buttonArray[index[0]][index[1]] = activePlayer;
+    assignArrayByButton(activePlayer, button);
     changeColor(button, activePlayer);
     checkIfSomeWon();
     playerOnesTurn = !playerOnesTurn;
 }
 
-
-function asignArrayByButton(btn, string) {
-    var index = btn.id.split("y");
-    buttonArray[index[0]][index[1]] = string;
-}
-
-/*
-This is Code became replaced with getElementById(index1, index2)
-function getElementById(index) {
-    var id = index.split("][").forEach(function (t) { t.replace("[", "").replace("]", ""); });
-    return document.getElementById(id[0]+"y"+id[1]);
-}
-*/
-
-function getElementById(index1, index2) {
-    return document.getElementById(index1+"y"+index2);
-}
-
-function getListOfButton(array) {
-    var list = [];
-    array.forEach(function (t, number1) {
-        t.forEach(function (t2, number2) {
-            list.push(getElementById(number1, number2));
-        })
-    });
-    return list;
-}
 
 function checkIfSomeWon()
 {
@@ -63,7 +35,7 @@ function checkIfSomeWon()
         {
             if (buttonArray[x][0] === buttonArray[x][1] && buttonArray[x][1] === buttonArray[x][2])
             {
-                displayWinner(buttonArray[x][0]);
+                displayWinnerAndDisableButton(buttonArray[x][0]);
             }
         }
     }
@@ -74,7 +46,7 @@ function checkIfSomeWon()
         {
             if (buttonArray[0][y] === buttonArray[1][y] && buttonArray[1][y] === buttonArray[2][y])
             {
-                displayWinner(buttonArray[0][y]);
+                displayWinnerAndDisableButton(buttonArray[0][y]);
             }
         }
     }
@@ -83,12 +55,12 @@ function checkIfSomeWon()
     {
         if (buttonArray[0][0] === buttonArray[1][1] && buttonArray[1][1] === buttonArray[2][2])
         {
-            displayWinner(buttonArray[1][1]);
+            displayWinnerAndDisableButton(buttonArray[1][1]);
         }
 
         if (buttonArray[0][2] === buttonArray[1][1] && buttonArray[1][1] === buttonArray[2][0])
         {
-            displayWinner(buttonArray[1][1]);
+            displayWinnerAndDisableButton(buttonArray[1][1]);
         }
     }
 
@@ -96,6 +68,11 @@ function checkIfSomeWon()
     if (round > 8) displayDraw();
 }
 
+
+function displayWinnerAndDisableButton(winner) {
+    displayWinner(winner);
+    changeState(buttonArray, true);
+}
 
 function clickIsInvalid() {
     return false;
@@ -109,9 +86,3 @@ function checkEmail(textBox){
     addClass(textBox,  p);
 }
 
-
-function onloadEvent() {
-    alert('swag');
-}
-
-//window.onload = onloadEvent ;

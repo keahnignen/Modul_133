@@ -22,8 +22,3 @@ function displayDraw()
 function addClass(btn, s) {
     btn.className += s;
 }
-
-function changeButtonState(b) {
-
-}
-

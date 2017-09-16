@@ -8,7 +8,7 @@ h1 {
     text-transform: uppercase;
 }
 
-button {
+.tictactoebutton {
     overflow: hidden;
     padding: 50px 50px 50px 50px;
     margin-bottom: 4px;
