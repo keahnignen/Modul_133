@@ -32,3 +32,12 @@ section {
     margin-top: 1vw;
     margin-left: 5vw;
 }
+
+
+.emailValid {
+    border-color: deepskyblue;
+}
+
+.emailInvalid {
+    border-color: green;
+}
