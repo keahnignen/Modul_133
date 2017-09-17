@@ -14,26 +14,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TicTacToeController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/TicTacToeController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="816">
-              <caret line="81" column="13" lean-forward="true" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Utilities.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/Utilities.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MainController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/MainController.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -44,31 +24,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StartButtonController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="StartButtonController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/StartButtonController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="40" lean-forward="true" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="View.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/View.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InputElements.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/InputElements.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-442">
-              <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+            <state relative-caret-position="765">
+              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -77,18 +37,48 @@
       <file leaf-file-name="TicTacToeButtonController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/TicTacToeButtonController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+            <state relative-caret-position="340">
+              <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/Style.css">
+      <file leaf-file-name="TicTacToeController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/TicTacToeController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-23">
+              <caret line="27" column="37" lean-forward="true" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Utilities.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/Utilities.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="42" column="84" lean-forward="false" selection-start-line="42" selection-start-column="84" selection-end-line="42" selection-end-column="84" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InputElements.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/InputElements.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="137" column="63" lean-forward="true" selection-start-line="137" selection-start-column="63" selection-end-line="137" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="View.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/View.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="34" column="50" lean-forward="false" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -104,11 +94,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TicTacToeButtons.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/Style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TicTacToeButtons.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/TicTacToeButtons.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state relative-caret-position="85">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -128,6 +128,9 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>changeState</find>
+      <find>getChe</find>
+      <find>createText</find>
+      <find>getChecke</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -154,13 +157,13 @@
         <option value="$PROJECT_DIR$/view/TicTacToe.html" />
         <option value="$PROJECT_DIR$/view/Style.css" />
         <option value="$PROJECT_DIR$/controller/MainController.js" />
-        <option value="$PROJECT_DIR$/view/TicTacToeButtons.js" />
         <option value="$PROJECT_DIR$/controller/TicTacToeButtonController.js" />
-        <option value="$PROJECT_DIR$/view/InputElements.js" />
-        <option value="$PROJECT_DIR$/view/View.js" />
-        <option value="$PROJECT_DIR$/controller/StartButtonController.js" />
-        <option value="$PROJECT_DIR$/controller/Utilities.js" />
         <option value="$PROJECT_DIR$/controller/TicTacToeController.js" />
+        <option value="$PROJECT_DIR$/view/View.js" />
+        <option value="$PROJECT_DIR$/view/TicTacToeButtons.js" />
+        <option value="$PROJECT_DIR$/controller/StartButtonController.js" />
+        <option value="$PROJECT_DIR$/view/InputElements.js" />
+        <option value="$PROJECT_DIR$/controller/Utilities.js" />
       </list>
     </option>
   </component>
@@ -215,8 +218,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -285,11 +288,12 @@
       <workItem from="1505555731697" duration="7661000" />
       <workItem from="1505584212662" duration="22192000" />
       <workItem from="1505645421491" duration="3855000" />
+      <workItem from="1505652605420" duration="16192000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58486000" />
+    <option name="totallyTimeSpent" value="74678000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -611,14 +615,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/InputElementsController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/InputElementsController.js" />
     <entry file="file://$PROJECT_DIR$/view/TicTacToe.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
@@ -630,7 +627,7 @@
     <entry file="file://$PROJECT_DIR$/view/Style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -643,18 +640,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/InputElements.js">
+    <entry file="file://$PROJECT_DIR$/view/View.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-442">
-          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        <state relative-caret-position="578">
+          <caret line="34" column="50" lean-forward="false" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/View.js">
+    <entry file="file://$PROJECT_DIR$/view/TicTacToeButtons.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/InputElements.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="137" column="63" lean-forward="true" selection-start-line="137" selection-start-column="63" selection-end-line="137" selection-end-column="63" />
           <folding />
         </state>
       </provider>
@@ -667,42 +672,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/Utilities.js">
+    <entry file="file://$PROJECT_DIR$/controller/TicTacToeController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        <state relative-caret-position="-23">
+          <caret line="27" column="37" lean-forward="true" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/StartButtonController.js">
+    <entry file="file://$PROJECT_DIR$/controller/Utilities.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="40" lean-forward="true" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+        <state relative-caret-position="561">
+          <caret line="42" column="84" lean-forward="false" selection-start-line="42" selection-start-column="84" selection-end-line="42" selection-end-column="84" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/TicTacToeButtonController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+        <state relative-caret-position="340">
+          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/TicTacToeController.js">
+    <entry file="file://$PROJECT_DIR$/controller/StartButtonController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="81" column="13" lean-forward="true" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/TicTacToeButtons.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state relative-caret-position="765">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
           <folding />
         </state>
       </provider>

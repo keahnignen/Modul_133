@@ -2,14 +2,24 @@ function clickIsInvalid() {
     return false;
 }
 
+var unassigned = 'x';
+
+checkEmail(unassigned);
 
 function checkEmail(textBox)
 {
-    var email = textBox.value;
-    if (email)
+
+    console.log('mucho');
+
+    if (textBox === unassigned)
     {
         return false;
     }
+
+    var email = textBox.value;
+
+    console.log('muchoNachos');
+
     textBox.className = (isEmailValid(email)) ? 'emailInvalid' : 'emailValid';
     return isEmailValid(email);
 }
@@ -20,3 +30,30 @@ function isEmailValid(email)
     return regex.test(email);
 }
 
+
+function getAllChildern(element)
+{
+    var list = [];
+    createAllChildern(element, list);
+    return list;
+}
+
+function createAllChildern(element, arrayList) {
+    arrayList.push(element);
+    getListOfChildern(element).forEach(function (t) { createAllChildern(t, arrayList); })
+}
+
+
+
+function getListOfChildern(element) {
+    var array = element.children;
+    var list = [];
+    for (var i = 0; i < array.length; i++)
+    {
+        list.push(array[i]);
+    }
+
+    if (list)
+
+    return list;
+}

@@ -29,3 +29,12 @@ function addClass(btn, s) {
 function changeClass(element, s) {
     element.className = s;
 }
+
+function displayDifferent()
+{
+    getLabel().textContent = 'E-Mail are similar';
+}
+
+function displayStart() {
+    getLabel().textContent = 'Game has startet';
+}

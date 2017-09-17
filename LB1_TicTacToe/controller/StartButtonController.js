@@ -1,22 +1,45 @@
-function startButtonClick() {
+
+
+
+function startButtonClick(btn) {
     var occuredAnError = false;
-    getRadiobuttons().forEach(function (t) {
-        if (t.checked)
-        {
-            if (t.hasChildNodes())
-            {
-               var array  = Array.prototype.slice.call(t.childNodes);
-                array.forEach(function (t2) {
-                    if (!checkEmail(t2))
-                    {
-                        displayError('At least one E-Mail is invalid');
-                    }
-                })
-            }
-        }
-    });
-    if (!occuredAnError)
+    var radio = getCheckedRadioButton();
+    if (areEmailsOther())
     {
-        changeState(getListOfButtons(), false);
+        console.log(areEmailsOther());
+
+        if (radio.className)
+        {
+            var s = getListOfChildern(document.getElementById(radio.id+getIndent()));
+            var newArray = [];
+            s.forEach(function (t) {
+                if (t.tagName === 'INPUT')
+                newArray.push(t);
+            });
+            console.log(newArray);
+            newArray.forEach(function (t2) {
+                if (!isEmailValid(t2.value))
+                {
+                    occuredAnError = true;
+                    displayError('At least one E-Mail is invalid');
+                }
+            });
+        }
+
+        if (!occuredAnError)
+        {
+            displayStart();
+            changeState(getListOfButtons(), true);
+            btn.disabled = true;
+            var swag = getAllChildern(document.getElementById(getDivId()));
+            console.log(swag);
+            changeState(swag, false);
+        }
+    }
+    else
+    {
+        displayDifferent();
     }
 }
+
+

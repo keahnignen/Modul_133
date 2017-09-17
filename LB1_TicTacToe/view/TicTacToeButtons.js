@@ -17,10 +17,11 @@ function getArrayOfNewButtons() {
         document.getElementById('TicTacToe').appendChild(div);
     }
     parseArray(array, notAssigned);
-    changeState(getListOfButtons(), true);
+    changeState(getListOfButtons(), false);
 
 }
 
-function changeState(list, willDisabled) {
-   list.forEach(function (t) { t.disabled = willDisabled; })
+
+function changeState(list, enable) {
+   list.forEach(function (t) { t.disabled = !enable; })
 }

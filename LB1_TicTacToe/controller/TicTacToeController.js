@@ -79,6 +79,6 @@ function checkIfSomeWon()
 
 function displayWinnerAndDisableButton(winner) {
     displayWinner(winner);
-    changeState(buttonList, true);
+    changeState(buttonList, false);
 }
 

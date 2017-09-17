@@ -6,7 +6,7 @@ function getTextboxes() {
     return textBoxArray;
 }
 
-function getRadiobuttons() {
+function getRadioButtons() {
     return radioButtonArray;
 }
 
@@ -14,17 +14,24 @@ function getLabel() {
     return label;
 }
 
+function getDivId() {
+    return 'divID'
+}
+
 function createAll() {
     var div = document.createElement('DIV');
+    div.id = getDivId();
     createRadioButtons(div);
     document.body.appendChild(div);
     createButtons();
     createLabel();
 }
 
+var radioButtonId = ['pvp', 'pvk', 'kvk'];
+
 function createRadioButtons(parent) {
 
-    var radioButtonId = ['pvp', 'pvk', 'kvk'];
+
     var labelString = ['Human vs Human', 'Human vs K.I.', 'K.I. vs K.I.'];
     var radioButtonName = 'gameMode';
 
@@ -37,9 +44,13 @@ function createRadioButtons(parent) {
         radioButton.name = radioButtonName;
         radioButton.value = i;
         radioButtonArray.push(radioButton);
+        if (i !== 2)
+        {
+            radioButton.className = getRadioButtonClassTextbox();
+        }
 
         var label = document.createElement('LABEL');
-        label.for = radioButtonId[i];
+        label.setAttribute('for', radioButtonId[i]);
         label.textContent = labelString[i];
 
         var section = document.createElement('SECTION');
@@ -61,13 +72,36 @@ function createRadioButtons(parent) {
     }
 }
 
+
+var textBoxId = ['emailOne', 'emailTwo', 'emailThree'];
+
+function areEmailsOther() {
+    for (var x = 0; x < textBoxArray.length-1; x++)
+    {
+        if (textBoxArray[x].value === textBoxArray[x+1].value)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+function getTexboxId() {
+    return textBoxId;
+}
+
+function getIndent() {
+    return 'indent';
+}
+
 function createTextboxes(parent, startPoint, max) {
 
     var indent = document.createElement('DIV');
     indent.className = 'indent';
+    var x = radioButtonId[max-2] + getIndent();
+    console.log(x);
+    indent.id = x; //Pretty Ugly!
     parent.appendChild(indent);
-
-    var textBoxId = ['emailOne', 'emailTwo', 'emailThree'];
     var textBoxPlaceholder = ['i@am.batman', 'why@so.serious', 'i@like.trains'];
 
     for (var i = startPoint; i < max; i++)
@@ -88,8 +122,6 @@ function createTextboxes(parent, startPoint, max) {
 }
 
 function createButtons() {
-
-
     var section = document.createElement('SECTION');
     document.body.appendChild(section);
 
@@ -108,7 +140,7 @@ function createButtons() {
 
         if (i === 1)
         {
-            button.onclick = function () { startButtonClick() };
+            button.onclick = function () { startButtonClick(this) };
         }
 
         section.appendChild(button);
@@ -121,4 +153,20 @@ function createLabel() {
     lbl.id = lblId;
     document.body.appendChild(lbl);
     label = lbl;
+}
+
+function getRadioButtonClassTextbox() {
+    return 'hasTextboxes';
+}
+
+
+function getCheckedRadioButton()
+{
+    var x;
+    getRadioButtons().forEach(function (t) {
+        if (t.checked) {
+            x = t;
+        }
+    });
+    return x;
 }
