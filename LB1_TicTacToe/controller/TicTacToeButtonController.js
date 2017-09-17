@@ -10,7 +10,8 @@ function assignArrayByButton(element, btn) {
     buttonArray[index[0]][index[1]] = element;
 }
 
-function getListOfButton(array) {
+function getListConvertedOfButton(array) {
+    console.log(array);
     var list = [];
     array.forEach(function (t, number1) {
         t.forEach(function (t2, number2) {

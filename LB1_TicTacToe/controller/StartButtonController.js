@@ -9,7 +9,6 @@ function startButtonClick() {
                 array.forEach(function (t2) {
                     if (!checkEmail(t2))
                     {
-
                         displayError('At least one E-Mail is invalid');
                     }
                 })
@@ -18,6 +17,6 @@ function startButtonClick() {
     });
     if (!occuredAnError)
     {
-        changeState(getListofButtons(), false);
+        changeState(getListOfButtons(), false);
     }
 }

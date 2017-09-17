@@ -18,9 +18,8 @@ function displayError(errorMessage) {
     sendMessage(errorMessage);
 }
 
-var labelId = 'lbl';
 function sendMessage(message) {
-    document.getElementById(labelId).textContent = message;
+    getLabel().textContent = message;
 }
 
 function addClass(btn, s) {

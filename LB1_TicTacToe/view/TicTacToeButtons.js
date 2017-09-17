@@ -16,11 +16,11 @@ function getArrayOfNewButtons() {
         }
         document.getElementById('TicTacToe').appendChild(div);
     }
-    changeState(array, true);
     parseArray(array, notAssigned);
+    changeState(getListOfButtons(), true);
 
 }
 
 function changeState(list, willDisabled) {
-    getListOfButton(list).forEach(function (t) { t.disabled = willDisabled; })
+   list.forEach(function (t) { t.disabled = willDisabled; })
 }

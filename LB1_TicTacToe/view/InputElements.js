@@ -1,5 +1,6 @@
 var textBoxArray = [];
 var radioButtonArray = [];
+var label;
 
 function getTextboxes() {
     return textBoxArray;
@@ -9,13 +10,16 @@ function getRadiobuttons() {
     return radioButtonArray;
 }
 
+function getLabel() {
+    return label;
+}
+
 function createAll() {
     var div = document.createElement('DIV');
     createRadioButtons(div);
     document.body.appendChild(div);
     createButtons();
-
-
+    createLabel();
 }
 
 function createRadioButtons(parent) {
@@ -109,4 +113,12 @@ function createButtons() {
 
         section.appendChild(button);
     }
+}
+
+function createLabel() {
+    var lblId = 'lbl';
+    var lbl = document.createElement('P');
+    lbl.id = lblId;
+    document.body.appendChild(lbl);
+    label = lbl;
 }

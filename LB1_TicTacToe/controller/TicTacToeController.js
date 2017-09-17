@@ -11,10 +11,10 @@ var round = 0;
 function parseArray(arrayParameter, unsignedStringParameter) {
     buttonArray = arrayParameter;
     unsignedString = unsignedStringParameter;
-    buttonList = getListOfButton(arrayParameter);
+    buttonList = getListConvertedOfButton(arrayParameter);
 }
 
-function getListofButtons() {
+function getListOfButtons() {
     return buttonList;
 }
 
@@ -70,12 +70,15 @@ function checkIfSomeWon()
     }
 
 
-    if (round > 8) displayDraw();
+    if (round > 8) {
+        displayDraw();
+        changeState(buttonList, false);
+    }
 }
 
 
 function displayWinnerAndDisableButton(winner) {
     displayWinner(winner);
-    changeState(buttonArray, true);
+    changeState(buttonList, true);
 }
 

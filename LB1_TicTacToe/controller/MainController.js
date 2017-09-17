@@ -12,7 +12,6 @@ function loadScript(path) {
     document.body.appendChild(script);
 }
 
-
 function onloadEvent() {
     getArrayOfNewButtons();
     createAll();
