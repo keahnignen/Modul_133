@@ -35,9 +35,9 @@ section {
 
 
 .emailValid {
-    border-color: deepskyblue;
+    border: 2px solid red;
 }
 
 .emailInvalid {
-    border-color: green;
+    border: 2px solid green;
 }

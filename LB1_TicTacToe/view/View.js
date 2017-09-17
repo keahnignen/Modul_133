@@ -26,3 +26,7 @@ function sendMessage(message) {
 function addClass(btn, s) {
     btn.className += s;
 }
+
+function changeClass(element, s) {
+    element.className = s;
+}

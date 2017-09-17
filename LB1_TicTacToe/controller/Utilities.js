@@ -5,8 +5,8 @@ function clickIsInvalid() {
 
 function checkEmail(textBox)
 {
-    var p = (isEmailValid(textBox.textContent)) ? 'emailValid' : 'emailInvalid';
-    addClass(textBox,  p);
+    textBox.className = (isEmailValid(textBox.value)) ? 'emailInvalid' : 'emailValid';
+    return isEmailValid(textBox.value);
 }
 
 function isEmailValid(email)

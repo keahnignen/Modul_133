@@ -3,6 +3,7 @@ var playerOne = 'playerOne';
 var playerTwo = 'playerTwo';
 var activePlayer;
 var buttonArray =  [];
+var buttonList = [];
 var unsignedString;
 var round = 0;
 
@@ -10,6 +11,11 @@ var round = 0;
 function parseArray(arrayParameter, unsignedStringParameter) {
     buttonArray = arrayParameter;
     unsignedString = unsignedStringParameter;
+    buttonList = getListOfButton(arrayParameter);
+}
+
+function getListofButtons() {
+    return buttonList;
 }
 
 function buttonClick(button) {
