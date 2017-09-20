@@ -1,22 +1,28 @@
 
 
-
 function startButtonClick(btn) {
     var occuredAnError = false;
-    var radio = getCheckedRadioButton();
-    if (areEmailsOther())
-    {
-        console.log(areEmailsOther());
 
+    var radio = getCheckedRadioButton();
+    //If a there is just one field to check:
+    //     than will the first statement be true, and it will continue
+    //     if its not the only one than will the second statemnet executed
+    //And id both is wrong, there will be  a error showed
+
+
+    if (!needsValidation(radio.id) || areEmailsOther())
+    {
+        //Check if emails are Valid
         if (radio.className)
         {
+
             var s = getListOfChildern(document.getElementById(radio.id+getIndent()));
             var newArray = [];
             s.forEach(function (t) {
                 if (t.tagName === 'INPUT')
                 newArray.push(t);
             });
-            console.log(newArray);
+            //console.log(newArray);
             newArray.forEach(function (t2) {
                 if (!isEmailValid(t2.value))
                 {
@@ -25,6 +31,7 @@ function startButtonClick(btn) {
                 }
             });
         }
+        //end if, for checking if email is valid
 
         if (!occuredAnError)
         {
@@ -32,7 +39,7 @@ function startButtonClick(btn) {
             changeState(getListOfButtons(), true);
             btn.disabled = true;
             var swag = getAllChildern(document.getElementById(getDivId()));
-            console.log(swag);
+            //console.log(swag);
             changeState(swag, false);
         }
     }
@@ -40,6 +47,15 @@ function startButtonClick(btn) {
     {
         displayDifferent();
     }
+
+    if (battleKI())
+    {
+        for (var i = 0; i < 9; i++)
+        {
+            pressRandomButton();
+        }
+    }
+
 }
 
 

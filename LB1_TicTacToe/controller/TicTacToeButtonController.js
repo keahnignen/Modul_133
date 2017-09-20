@@ -19,3 +19,7 @@ function getListConvertedOfButton(array) {
     });
     return list;
 }
+
+function getButtonByIndex(index1, index2) {
+    return document.getElementById(getIdByIndex(index1, index2));
+}

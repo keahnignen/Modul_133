@@ -6,7 +6,15 @@ var buttonArray =  [];
 var buttonList = [];
 var unsignedString;
 var round = 0;
+var roundKI = false;
 
+
+
+function getNameOfKI(number)
+{
+    number++;
+    return 'KI'+number;
+}
 
 function parseArray(arrayParameter, unsignedStringParameter) {
     buttonArray = arrayParameter;
@@ -14,19 +22,58 @@ function parseArray(arrayParameter, unsignedStringParameter) {
     buttonList = getListConvertedOfButton(arrayParameter);
 }
 
+function getUnsigendString() {
+    return unsignedString;
+}
+
 function getListOfButtons() {
     return buttonList;
 }
 
+
+function getButtonArray() {
+    return buttonArray;
+}
+
+/**
+ *
+ * @param button
+ * @param versusKI {boolean}
+ */
+
 function buttonClick(button) {
-    if (clickIsInvalid()) return;
+
     round++;
+    if (versusKI())
+    {
+        playerOne = getPlayer(2);
+        playerTwo = getNameOfKI(0);
+    }
+    else if (battleKI()) {
+        playerOne = getNameOfKI(0);
+        playerTwo = getNameOfKI(1);
+    } else {
+        playerOne = getPlayer(0);
+        playerTwo = getPlayer(1)
+    }
+
     activePlayer = (playerOnesTurn) ? playerOne : playerTwo;
     assignArrayByButton(activePlayer, button);
     changeColor(button, activePlayer);
     checkIfSomeWon();
     playerOnesTurn = !playerOnesTurn;
+
+    //Nur Ki vs Mensch
+    if (versusKI())
+    {
+        if (!roundKI)
+        {
+            pressRandomButton();
+        }
+    }
+    roundKI = !roundKI;
 }
+
 
 
 function checkIfSomeWon()
@@ -41,6 +88,7 @@ function checkIfSomeWon()
             if (buttonArray[x][0] === buttonArray[x][1] && buttonArray[x][1] === buttonArray[x][2])
             {
                 displayWinnerAndDisableButton(buttonArray[x][0]);
+                return;
             }
         }
     }
@@ -52,6 +100,7 @@ function checkIfSomeWon()
             if (buttonArray[0][y] === buttonArray[1][y] && buttonArray[1][y] === buttonArray[2][y])
             {
                 displayWinnerAndDisableButton(buttonArray[0][y]);
+                return;
             }
         }
     }
@@ -61,11 +110,13 @@ function checkIfSomeWon()
         if (buttonArray[0][0] === buttonArray[1][1] && buttonArray[1][1] === buttonArray[2][2])
         {
             displayWinnerAndDisableButton(buttonArray[1][1]);
+            return;
         }
 
         if (buttonArray[0][2] === buttonArray[1][1] && buttonArray[1][1] === buttonArray[2][0])
         {
             displayWinnerAndDisableButton(buttonArray[1][1]);
+            return;
         }
     }
 

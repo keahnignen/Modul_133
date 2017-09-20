@@ -9,19 +9,23 @@ h1 {
 }
 
 .tictactoebutton {
-    overflow: hidden;
     padding: 50px 50px 50px 50px;
     margin-bottom: 4px;
-    font-size: 0;
     background-color: white;
 }
 
-.playerOneColor {
+.emailOneColor, emailThreeColor {
     background-color: darkorange;
 }
 
-.playerTwoColor {
+.emailTwoColor {
     background-color: deepskyblue;
+}
+
+/*i know super ugly*/
+
+.emailOneColor, .emailTwoColor, .emailThreeColor {
+    padding: 42px 42px 42px 42px;
 }
 
 section {
@@ -36,8 +40,10 @@ section {
 
 .emailValid {
     border: 2px solid red;
+
 }
 
 .emailInvalid {
     border: 2px solid green;
 }
+

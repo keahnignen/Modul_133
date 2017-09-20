@@ -9,7 +9,7 @@ function getArrayOfNewButtons() {
         {
             var button = document.createElement("BUTTON");
             button.id = getIdByIndex(i, j);
-            button.onclick =  function() { buttonClick(this); };
+            button.onclick =  function() { buttonClick(this, false); };
             button.className = "tictactoebutton";
             array[i][j] = notAssigned;
             div.appendChild(button);

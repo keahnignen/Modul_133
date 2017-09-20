@@ -1,12 +1,49 @@
 
+
+
+
+
+
 function changeColor(button, className) {
-    button.className += " " + className + "Color";
+
+    //player in orange
+    var glyph = 'glyphicon glyphicon-ok ';
+
+    //Player in blue
+    if (className === getPlayer(1))
+    {
+        glyph = 'glyphicon glyphicon-remove ';
+    }
+
+
+    //for indetify the color of the ki (i know its ugly)
+    if (itsAKI(className))
+    {
+        if (getNameOfKI(1))
+        {
+            className = getPlayer(1);
+        }
+        else
+        {
+            className = getPlayer(0);
+        }
+    }
+
+    button.className += " " + glyph + className + "Color";
     button.disabled = true;
 }
 
 function displayWinner(player)
 {
-    sendMessage(document.getElementById(player) + " won!");
+    if (itsAKI(player))
+    {
+        sendMessage(player+' won!')
+    }
+    else
+    {
+        console.log(player);
+        sendMessage(document.getElementById(player).value + " won!");
+    }
 }
 
 function displayDraw()

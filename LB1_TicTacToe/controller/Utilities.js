@@ -1,6 +1,3 @@
-function clickIsInvalid() {
-    return false;
-}
 
 var unassigned = 'x';
 
@@ -30,6 +27,9 @@ function isEmailValid(email)
     return regex.test(email);
 }
 
+function itsAKI(player) {
+    return (player === getNameOfKI(0) || player === getNameOfKI(1));
+}
 
 function getAllChildern(element)
 {
@@ -56,4 +56,19 @@ function getListOfChildern(element) {
     if (list)
 
     return list;
+}
+
+function pressRandomButton() {
+
+    var pas = true;
+    while (pas)
+    {
+        var x = Math.floor((Math.random() * 3) );
+        console.log(x);
+        var y = Math.floor((Math.random() * 3) );
+        if (getButtonArray()[x][y] === getUnsigendString()){
+            pas = false;
+        }
+    }
+    buttonClick(getButtonByIndex(x,y))
 }

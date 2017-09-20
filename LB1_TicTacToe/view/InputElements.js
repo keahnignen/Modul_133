@@ -28,6 +28,9 @@ function createAll() {
 }
 
 var radioButtonId = ['pvp', 'pvk', 'kvk'];
+var needsVaildationArray = [];
+var versusKIArray = [];
+var battleKIArray = [];
 
 function createRadioButtons(parent) {
 
@@ -58,25 +61,59 @@ function createRadioButtons(parent) {
         section.appendChild(radioButton);
         section.appendChild(label);
 
-        if (i === 0)
-        {
-            radioButton.checked = true;
-            createTextboxes(section, 0, 2);
-        }
-        else if (i === 1)
-        {
-            createTextboxes(section, 2, 3);
-        }
 
-
+        switch (i) {
+            case 0:
+                needsVaildationArray.push(radioButtonId[i]);
+                radioButton.checked = true;
+                createTextboxes(section, 0, 2);
+                break;
+            case 1:
+                createTextboxes(section, 2, 3);
+                versusKIArray.push(radioButtonId[i]);
+                break;
+            case 2:
+                battleKIArray.push(radioButtonId[i]);
+                break;
+        }
     }
 }
 
 
+function checkIFArrayContent(list, isEqual) {
+    var returnValue = false;
+    list.forEach(function (t) {
+        if (t === isEqual)
+        {
+            returnValue = true;
+        }
+    });
+    return returnValue;
+}
+
+
+function versusKI() {
+    return checkIFArrayContent(versusKIArray, getCheckedRadioButton().id);
+}
+
+
+function battleKI() {
+    return checkIFArrayContent(battleKIArray, getCheckedRadioButton().id);
+}
+
+function needsValidation(radioButtonId) {
+    return checkIFArrayContent(needsVaildationArray, radioButtonId)
+}
+
+
+function getPlayer(number) {
+    return textBoxId[number];
+}
+
 var textBoxId = ['emailOne', 'emailTwo', 'emailThree'];
 
 function areEmailsOther() {
-    for (var x = 0; x < textBoxArray.length-1; x++)
+    for (var x = 0; x < textBoxArray.length-2; x++)
     {
         if (textBoxArray[x].value === textBoxArray[x+1].value)
         {
