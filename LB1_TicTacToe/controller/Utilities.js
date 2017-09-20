@@ -6,8 +6,6 @@ checkEmail(unassigned);
 function checkEmail(textBox)
 {
 
-    console.log('mucho');
-
     if (textBox === unassigned)
     {
         return false;
@@ -15,7 +13,6 @@ function checkEmail(textBox)
 
     var email = textBox.value;
 
-    console.log('muchoNachos');
 
     textBox.className = (isEmailValid(email)) ? 'emailInvalid' : 'emailValid';
     return isEmailValid(email);

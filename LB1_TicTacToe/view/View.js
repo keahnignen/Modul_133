@@ -19,15 +19,9 @@ function changeColor(button, className) {
     //for indetify the color of the ki (i know its ugly)
     if (itsAKI(className))
     {
-        if (getNameOfKI(1))
-        {
-            className = getPlayer(1);
-        }
-        else
-        {
-            className = getPlayer(0);
-        }
+        glyph = '\tglyphicon glyphicon-user ';
     }
+
 
     button.className += " " + glyph + className + "Color";
     button.disabled = true;
@@ -41,7 +35,6 @@ function displayWinner(player)
     }
     else
     {
-        console.log(player);
         sendMessage(document.getElementById(player).value + " won!");
     }
 }

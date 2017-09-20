@@ -43,6 +43,7 @@ function getButtonArray() {
 
 function buttonClick(button) {
 
+
     round++;
     if (versusKI())
     {
@@ -63,22 +64,22 @@ function buttonClick(button) {
     checkIfSomeWon();
     playerOnesTurn = !playerOnesTurn;
 
+    roundKI = !roundKI;
     //Nur Ki vs Mensch
     if (versusKI())
     {
-        if (!roundKI)
+
+        if (roundKI)
         {
             pressRandomButton();
         }
     }
-    roundKI = !roundKI;
 }
 
 
 
 function checkIfSomeWon()
 {
-    console.log(round);
     if (round < 5) return;
 
     for (var x = 0; x <= 2; x++)
