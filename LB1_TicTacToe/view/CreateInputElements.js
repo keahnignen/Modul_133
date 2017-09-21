@@ -32,6 +32,29 @@ var needsVaildationArray = [];
 var versusKIArray = [];
 var battleKIArray = [];
 
+function createTicTacToeButtonsAndParseThem() {
+    var array = [];
+    var notAssigned = "NotAssigned";
+    for(var i = 0; i < 3; i++)
+    {
+        if (!array[i]) array[i] = [];
+        var div = document.createElement("DIV");
+        for(var j = 0; j < 3; j++)
+        {
+            var button = document.createElement("BUTTON");
+            button.id = getIdByIndex(i, j);
+            button.onclick =  function() { buttonClick(this, false); };
+            button.className = "tictactoebutton";
+            array[i][j] = notAssigned;
+            div.appendChild(button);
+        }
+        document.getElementById('TicTacToe').appendChild(div);
+    }
+    parseArray(array, notAssigned);
+    changeState(getListOfButtons(), false);
+
+}
+
 function createRadioButtons(parent) {
 
 
@@ -92,23 +115,6 @@ function checkIFArrayContent(list, isEqual) {
 }
 
 
-function versusKI() {
-    return checkIFArrayContent(versusKIArray, getCheckedRadioButton().id);
-}
-
-
-function battleKI() {
-    return checkIFArrayContent(battleKIArray, getCheckedRadioButton().id);
-}
-
-function needsValidation(radioButtonId) {
-    return checkIFArrayContent(needsVaildationArray, radioButtonId)
-}
-
-
-function getPlayer(number) {
-    return textBoxId[number];
-}
 
 var textBoxId = ['emailOne', 'emailTwo', 'emailThree'];
 
@@ -121,14 +127,6 @@ function areEmailsOther() {
         }
     }
     return true;
-}
-
-function getTexboxId() {
-    return textBoxId;
-}
-
-function getIndent() {
-    return 'indent';
 }
 
 function createTextboxes(parent, startPoint, max) {

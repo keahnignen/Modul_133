@@ -1,3 +1,7 @@
+/**
+ * this class will used if somone press the start button
+ * @param btn {Button}
+ */
 
 
 function startButtonClick(btn) {
@@ -10,7 +14,7 @@ function startButtonClick(btn) {
     //And id both is wrong, there will be  a error showed
 
 
-    if (!needsValidation(radio.id) || areEmailsOther())
+    if (!needsValidation() || areEmailsOther())
     {
         //Check if emails are Valid
         if (radio.className)
@@ -48,7 +52,7 @@ function startButtonClick(btn) {
         displayDifferent();
     }
 
-    if (battleKI())
+    if (isItKiVersusKi())
     {
         for (var i = 0; i < 9; i++)
         {

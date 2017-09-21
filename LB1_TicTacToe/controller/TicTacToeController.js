@@ -9,32 +9,6 @@ var round = 0;
 var roundKI = false;
 
 
-
-function getNameOfKI(number)
-{
-    number++;
-    return 'KI'+number;
-}
-
-function parseArray(arrayParameter, unsignedStringParameter) {
-    buttonArray = arrayParameter;
-    unsignedString = unsignedStringParameter;
-    buttonList = getListConvertedOfButton(arrayParameter);
-}
-
-function getUnsigendString() {
-    return unsignedString;
-}
-
-function getListOfButtons() {
-    return buttonList;
-}
-
-
-function getButtonArray() {
-    return buttonArray;
-}
-
 /**
  *
  * @param button
@@ -43,19 +17,18 @@ function getButtonArray() {
 
 function buttonClick(button) {
 
-
     round++;
-    if (versusKI())
+    if (isItAHumanVersusKi())
     {
-        playerOne = getPlayer(2);
+        playerOne = getPlayerNameByIndex(2);
         playerTwo = getNameOfKI(0);
     }
-    else if (battleKI()) {
+    else if (isItKiVersusKi()) {
         playerOne = getNameOfKI(0);
         playerTwo = getNameOfKI(1);
     } else {
-        playerOne = getPlayer(0);
-        playerTwo = getPlayer(1)
+        playerOne = getPlayerNameByIndex(0);
+        playerTwo = getPlayerNameByIndex(1)
     }
 
     activePlayer = (playerOnesTurn) ? playerOne : playerTwo;
@@ -66,7 +39,7 @@ function buttonClick(button) {
 
     roundKI = !roundKI;
     //Nur Ki vs Mensch
-    if (versusKI())
+    if (isItAHumanVersusKi())
     {
 
         if (roundKI)
@@ -76,10 +49,7 @@ function buttonClick(button) {
     }
 }
 
-
-
-function checkIfSomeWon()
-{
+function checkIfSomeWon() {
     if (round < 5) return;
 
     for (var x = 0; x <= 2; x++)
@@ -127,10 +97,3 @@ function checkIfSomeWon()
         changeState(buttonList, false);
     }
 }
-
-
-function displayWinnerAndDisableButton(winner) {
-    displayWinner(winner);
-    changeState(buttonList, false);
-}
-

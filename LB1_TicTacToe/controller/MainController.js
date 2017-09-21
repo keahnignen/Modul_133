@@ -1,10 +1,13 @@
 
+loadScript("controller\\ControllerUtilities.js");
+loadScript("controller\\StartButtonController.js");
 loadScript('controller\\TicTacToeController.js');
 loadScript("controller\\TicTacToeButtonController.js");
-loadScript("controller\\StartButtonController.js");
-loadScript("controller\\Utilities.js");
 
-loadScript("view\\InputElements.js");
+
+
+
+loadScript("view\\CreateInputElements.js");
 
 function loadScript(path) {
     var script = document.createElement("script");
@@ -13,7 +16,7 @@ function loadScript(path) {
 }
 
 function onloadEvent() {
-    getArrayOfNewButtons();
+    createTicTacToeButtonsAndParseThem();
     createAll();
 }
 
