@@ -2,23 +2,10 @@ var textBoxArray = [];
 var radioButtonArray = [];
 var label;
 
-function getTextboxes() {
-    return textBoxArray;
-}
-
-function getRadioButtons() {
-    return radioButtonArray;
-}
-
-function getLabel() {
-    return label;
-}
-
-function getDivId() {
-    return 'divID'
-}
 
 function createAll() {
+    if (document.getElementById(getDivId())) document.getElementById(getDivId()).remove();
+    console.log('is not empthy');
     var div = document.createElement('DIV');
     div.id = getDivId();
     createRadioButtons(div);
@@ -38,6 +25,7 @@ function createTicTacToeButtonsAndParseThem() {
     for(var i = 0; i < 3; i++)
     {
         if (!array[i]) array[i] = [];
+
         var div = document.createElement("DIV");
         for(var j = 0; j < 3; j++)
         {
@@ -102,20 +90,6 @@ function createRadioButtons(parent) {
     }
 }
 
-
-function checkIFArrayContent(list, isEqual) {
-    var returnValue = false;
-    list.forEach(function (t) {
-        if (t === isEqual)
-        {
-            returnValue = true;
-        }
-    });
-    return returnValue;
-}
-
-
-
 var textBoxId = ['emailOne', 'emailTwo', 'emailThree'];
 
 function areEmailsOther() {
@@ -157,7 +131,9 @@ function createTextboxes(parent, startPoint, max) {
 }
 
 function createButtons() {
+    if (document.getElementById(getSectionId())) document.getElementById(getSectionId()).remove();
     var section = document.createElement('SECTION');
+    section.id = getSectionId();
     document.body.appendChild(section);
 
     var buttonTextContent = ['Reset', 'Start'];
@@ -170,7 +146,7 @@ function createButtons() {
 
         if (i === 0)
         {
-            button.onclick = function () { location.reload() };
+            button.onclick = function () { initalizeGame() };
         }
 
         if (i === 1)
@@ -180,28 +156,4 @@ function createButtons() {
 
         section.appendChild(button);
     }
-}
-
-function createLabel() {
-    var lblId = 'lbl';
-    var lbl = document.createElement('P');
-    lbl.id = lblId;
-    document.body.appendChild(lbl);
-    label = lbl;
-}
-
-function getRadioButtonClassTextbox() {
-    return 'hasTextboxes';
-}
-
-
-function getCheckedRadioButton()
-{
-    var x;
-    getRadioButtons().forEach(function (t) {
-        if (t.checked) {
-            x = t;
-        }
-    });
-    return x;
 }

@@ -1,8 +1,9 @@
 
-var unassigned = 'x';
 
-//Is uesless but, js is stiupid
-checkEmail(unassigned);
+
+// In this file are one liner functions, their name explain them self
+
+
 
 /**
  * Parses a List of Button from the Creation to the Controller, that the controller can use the Button directly
@@ -78,7 +79,7 @@ function assignArrayByButton(element, btn) {
 
 function checkEmail(textBox) {
 
-    if (textBox === unassigned)
+    if (textBox === 'x')
     {
         return false;
     }
@@ -152,6 +153,58 @@ function getPlayerNameByIndex(index) {
     return textBoxId[index];
 }
 
+function getTextboxes() {
+    return textBoxArray;
+}
+
+function getRadioButtons() {
+    return radioButtonArray;
+}
+
+function getLabel() {
+    return label;
+}
+
+function getDivId() {
+    return 'divID'
+}
+
+function getSectionId() {
+    return 'SectionID'
+}
+function checkIFArrayContent(list, isEqual) {
+    var returnValue = false;
+    list.forEach(function (t) {
+        if (t === isEqual)
+        {
+            returnValue = true;
+        }
+    });
+    return returnValue;
+}
+
+function createLabel() {
+    var lblId = 'lbl';
+    var lbl = document.createElement('P');
+    lbl.id = lblId;
+    document.body.appendChild(lbl);
+    label = lbl;
+}
+
+function getRadioButtonClassTextbox() {
+    return 'hasTextboxes';
+}
+
+function getCheckedRadioButton() {
+    var x;
+    getRadioButtons().forEach(function (t) {
+        if (t.checked) {
+            x = t;
+        }
+    });
+    return x;
+}
+
 
 //View
 function changeColor(button, className) {
@@ -215,3 +268,4 @@ function displayDifferent() {
 function displayStart() {
     getLabel().textContent = 'Game has startet';
 }
+

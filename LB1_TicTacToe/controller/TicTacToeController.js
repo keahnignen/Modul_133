@@ -52,6 +52,7 @@ function buttonClick(button) {
 function checkIfSomeWon() {
     if (round < 5) return;
 
+    //Alle Horizontalen
     for (var x = 0; x <= 2; x++)
     {
         if (buttonArray[x][0] !== unsignedString)
@@ -64,6 +65,7 @@ function checkIfSomeWon() {
         }
     }
 
+    //Alle Verikalen
     for (var y = 0; y <= 2; y++)
     {
         if (buttonArray[0][y] !== unsignedString)
@@ -76,6 +78,7 @@ function checkIfSomeWon() {
         }
     }
 
+    //Diagonal 1
     if (buttonArray[1][1] !== unsignedString)
     {
         if (buttonArray[0][0] === buttonArray[1][1] && buttonArray[1][1] === buttonArray[2][2])
@@ -84,6 +87,7 @@ function checkIfSomeWon() {
             return;
         }
 
+        //Diagonal 2
         if (buttonArray[0][2] === buttonArray[1][1] && buttonArray[1][1] === buttonArray[2][0])
         {
             displayWinnerAndDisableButton(buttonArray[1][1]);

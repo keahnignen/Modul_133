@@ -15,18 +15,24 @@ h1 {
 }
 
 .emailOneColor, .emailThreeColor {
-    background-color: darkorange;
+/*background-color: darkorange;*/
+    background-image: url("../iconTwo.png");
 }
 
 .emailTwoColor {
-    background-color: deepskyblue;
+    /*background-color: deepskyblue;*/
+    background-image: url("../iconOne.png");
+}
+
+.KI1Color {
+    background-image: url("../iconKI1.png");
+}
+
+.KI2Color {
+    background-image: url("../iconKI2.png");
 }
 
 /*i know super ugly*/
-
-.emailOneColor, .emailTwoColor, .emailThreeColor {
-    padding: 42px 42px 42px 42px;
-}
 
 section {
     margin-bottom: 1vw;
