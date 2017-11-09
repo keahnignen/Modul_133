@@ -24,5 +24,8 @@ class View {
         return file_get_contents(getFile());
     }
 
-    private function
+    private function getFileName()
+    {
+        return "swag";
+    }
 }
