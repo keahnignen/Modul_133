@@ -19,13 +19,17 @@ class View {
         return file_get_contents('view\Layout.html');
     }
 
-    private function getContent()
-    {
-        return file_get_contents(getFile());
-    }
 
     private function getFileName()
     {
         return "swag";
+    }
+
+    private function getContent()
+    {
+        $navbar = file_get_contents('view\header.html');
+        $bla = $this->getFileName();
+
+        return $navbar;
     }
 }

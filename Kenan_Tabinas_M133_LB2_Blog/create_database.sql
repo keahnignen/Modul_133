@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema blog
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema blog
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `blog` DEFAULT CHARACTER SET utf8 ;
+USE `blog` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`user`
+-- Table `blog`.`user`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`user` (
+CREATE TABLE IF NOT EXISTS `blog`.`user` (
   `id` INT NOT NULL,
   `username` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
@@ -27,18 +27,25 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user` (
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`topic`
+-- Table `blog`.`topic`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`topic` (
+CREATE TABLE IF NOT EXISTS `blog`.`topic` (
   `id` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`));
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `user_id`),
+  INDEX `fk_topic_user1_idx` (`user_id` ASC),
+  CONSTRAINT `fk_topic_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `blog`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`post`
+-- Table `blog`.`post`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`post` (
+CREATE TABLE IF NOT EXISTS `blog`.`post` (
   `id` INT NOT NULL,
   `text` VARCHAR(1000) NOT NULL,
   `user_id` INT NOT NULL,
@@ -48,20 +55,20 @@ CREATE TABLE IF NOT EXISTS `mydb`.`post` (
   INDEX `fk_post_topic1_idx` (`topic_id` ASC),
   CONSTRAINT `fk_post_user`
     FOREIGN KEY (`user_id`)
-    REFERENCES `mydb`.`user` (`id`)
+    REFERENCES `blog`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_post_topic1`
     FOREIGN KEY (`topic_id`)
-    REFERENCES `mydb`.`topic` (`id`)
+    REFERENCES `blog`.`topic` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`comment`
+-- Table `blog`.`comment`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`comment` (
+CREATE TABLE IF NOT EXISTS `blog`.`comment` (
   `id` INT NOT NULL,
   `text` VARCHAR(255) NOT NULL,
   `post_id` INT NOT NULL,
@@ -71,29 +78,20 @@ CREATE TABLE IF NOT EXISTS `mydb`.`comment` (
   INDEX `fk_comment_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_comment_post1`
     FOREIGN KEY (`post_id`)
-    REFERENCES `mydb`.`post` (`id`)
+    REFERENCES `blog`.`post` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_comment_user1`
     FOREIGN KEY (`user_id`)
-    REFERENCES `mydb`.`user` (`id`)
+    REFERENCES `blog`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`category_1`
+-- Table `blog`.`picture`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`category_1` (
-  `category_id` INT NOT NULL,
-  `name` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`category_id`));
-
-
--- -----------------------------------------------------
--- Table `mydb`.`picture`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`picture` (
+CREATE TABLE IF NOT EXISTS `blog`.`picture` (
   `id` INT NOT NULL,
   `path` VARCHAR(45) NOT NULL,
   `post_id` INT NOT NULL,
@@ -101,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`picture` (
   INDEX `fk_picture_post1_idx` (`post_id` ASC),
   CONSTRAINT `fk_picture_post1`
     FOREIGN KEY (`post_id`)
-    REFERENCES `mydb`.`post` (`id`)
+    REFERENCES `blog`.`post` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 

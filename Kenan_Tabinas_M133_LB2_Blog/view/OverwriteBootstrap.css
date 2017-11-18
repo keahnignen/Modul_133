@@ -1,0 +1,18 @@
+
+body {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.content {
+    margin-left: 20vw;
+}
+
+.searchBar {
+    margin-top: 0.5em;
+    margin-left: 10vw;
+    padding-right: 50vw;
+}
+
+h1 {
+    text-transform: uppercase;
+}
