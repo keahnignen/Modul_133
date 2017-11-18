@@ -27,9 +27,19 @@ class View {
 
     private function getContent()
     {
+        $url = parse_url($_SERVER['REQUEST_URI']);
+
+        $model = new PostRepository();
+
+        switch ($url)
+        {
+            default:
+
+        }
+
         $navbar = file_get_contents('view\header.html');
         $bla = $this->getFileName();
-
+        $swag = $model->getAllPosts();
         return $navbar;
     }
 }

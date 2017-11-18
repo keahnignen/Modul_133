@@ -3,10 +3,10 @@
  * Created by PhpStorm.
  * User: Keahnignen
  * Date: 18/11/2017
- * Time: 20:17
+ * Time: 23:50
  */
 
-class UserModel
+class PostModel
 {
 
     /**
@@ -17,23 +17,18 @@ class UserModel
     /**
      * @var string
      */
-    public $username;
+    public $text;
 
     /**
-     * @var string
+     * @var int
      */
 
-    public $email;
+    public $user_id;
 
     /**
-     * @var string
+     * @var int
      */
 
-    public $password;
-
-    /**
-     * @var bool
-     */
-    public $isAdmin;
+    public $topic_id;
 
 }
