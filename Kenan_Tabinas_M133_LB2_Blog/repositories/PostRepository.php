@@ -32,17 +32,7 @@ class PostRepository extends MainRepository
 
     private function executeStatement($query, $binds = null, $questionMarks = null)
     {
-
-        $stmt = $this->mysqli->prepare($query);
-
-        if ($stmt == false) throw new Exception("db prepare error");
-
-        if ($binds != null && $questionMarks != null)
-        {
-            $stmt->bind_param($questionMarks, $binds);
-        }
-
-        if (!$stmt->execute()) throw new Exception("Exicution error");
+        $stmt = $this->prepareStatement($query, $binds, $questionMarks);
 
         $stmt->bind_result($id, $text, $topic_id, $user_id);
 
@@ -63,6 +53,12 @@ class PostRepository extends MainRepository
 
 
     public function getAllPostByUser($id)
+    {
+        $query = "SELECT * FROM post where user_id = ?";
+        return $this->executeStatement($query, $id, 's');
+    }
+
+    public function getPostById($id)
     {
         $query = "SELECT * FROM post where id = ?";
         return $this->executeStatement($query, $id, 's');

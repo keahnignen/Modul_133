@@ -16,15 +16,9 @@ class UserRepository extends MainRepository
 
     public function getAllUsers()
     {
-
         $query = "SELECT * FROM user";
-        $stmt = $this->mysqli->prepare($query);
 
-        if ($stmt == false) throw new Exception("db prepare error");
-
-        //$stmt->bind_param('sss', $username,  $password, $email);
-
-        if (!$stmt->execute()) throw new Exception("Exicution error");
+        $stmt = $this->prepareStatement($query);
 
         $stmt->bind_result($id, $username, $email, $password, $isAdmin);
 
@@ -44,6 +38,7 @@ class UserRepository extends MainRepository
         return $users;
     }
 
+
     public function isUsernameTaken()
     {
         return false;
@@ -54,14 +49,23 @@ class UserRepository extends MainRepository
         return false;
     }
 
-    public function getUserById()
+    public function getUserById($id)
     {
-
+        return $this->getEmailById($id);
     }
 
     public function getUserByUsername()
     {
 
+    }
+
+    public function getEmailById($id)
+    {
+        var_dump($id);
+        $query = "SELECT email FROM `user` WHERE id = ?";
+        $stmt = $this->prepareStatement($query, $id, 's');
+        $stmt->bind_result($email);
+        return $email;
     }
 
 
