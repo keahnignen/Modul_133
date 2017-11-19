@@ -13,11 +13,11 @@ class MainRepository
     public function __construct()
     {
         $this->mysqli = new mysqli('127.0.0.1', 'root', '', 'blog');
-        /*
-         * if (mysqli_connect_errno())
+
+        if (mysqli_connect_errno())
         {
             throw new Exception("mysqli_connect_errno");
         }
-        */
+
     }
 }
