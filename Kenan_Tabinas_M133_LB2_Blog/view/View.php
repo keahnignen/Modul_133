@@ -16,7 +16,7 @@ class View {
 
     private function getLayout()
     {
-        return file_get_contents('view\Layout.html');
+        return file_get_contents('..\view\layout.html');
     }
 
 
@@ -27,19 +27,36 @@ class View {
 
     private function getContent()
     {
-        $url = parse_url($_SERVER['REQUEST_URI']);
+        $navbar = file_get_contents('..\view\header.html');
 
         $model = new PostRepository();
 
-        switch ($url)
-        {
-            default:
+        var_dump($_SERVER['HTTP_HOST']);
 
+
+        $uri = $_SERVER['REQUEST_URI'];
+        $uri = strtok($uri, '?');
+        $uri = trim($uri, '/');
+        $uriFragments = explode('/', $uri);
+
+        switch ($uri)
+        {
+            case "/user";
+
+            default;
+                $content = '<div class="content">';
+                $posts = $model->getAllPosts();
+                foreach ($posts as $post)
+                {
+                    $content = $content . '<div class="postBox">';
+                    $content = $content . '<p>' . $post->text . '<p>' ;
+                    $content = $content . '</div>';
+                }
         }
 
-        $navbar = file_get_contents('view\header.html');
-        $bla = $this->getFileName();
-        $swag = $model->getAllPosts();
-        return $navbar;
+
+        $contentString = $navbar . $content . '</div>';
+        return $contentString;
     }
+
 }

@@ -1,0 +1,28 @@
+
+body {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.content {
+    margin-left: 20vw;
+    width: 60vw;
+
+}
+
+.searchBar {
+    margin-top: 0.5em;
+    margin-left: 15vw;
+    padding-right: 40vw;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+.postBox
+{
+    padding: 5vw 5vw 5vw 5vw;
+    box-shadow: 10px 10px 5px grey;
+    margin-bottom: 2vw;
+    background-color: ghostwhite;
+}

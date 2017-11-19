@@ -16,7 +16,8 @@ class PostRepository extends MainRepository
     public function getAllPosts()
     {
         $query = "SELECT * FROM post";
-        $this->executeStatement($query);
+        $variable = $this->executeStatement($query);
+        return $variable;
     }
 
 
@@ -25,7 +26,7 @@ class PostRepository extends MainRepository
      * @param $query string
      * @param $binds string
      * @param $questionMarks string
-     * @return array PostModels
+     * @return array
      * @throws Exception
      */
 
