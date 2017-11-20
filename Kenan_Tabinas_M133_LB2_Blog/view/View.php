@@ -79,14 +79,13 @@ class View {
                 break;
 
 
-            case "posts":
+            case "user":
                 if (isset($queryStrings["id"]))
                 {
                     if (is_numeric($queryStrings["id"]))
                     {
                         $repository = new UserRepository();
                         $email = $repository->getUserById($queryStrings["id"]);
-                        var_dump($email);
                         $content = $content . "<h1>{$email}</h1>";
                         $repository = new PostRepository();
                         $content = $this->getPostString($repository->getAllPostByUser($queryStrings["id"]), $content);
@@ -94,7 +93,7 @@ class View {
                 }
                 break;
 
-            case "user":
+            case "log":
 
                 $content = $content . file_get_contents('..\view\login.html');
                 break;
@@ -103,9 +102,10 @@ class View {
 
                 $repository = new UserRepository();
                 $users = $repository->getAllUsers();
+                $content = $content . "<h1>Users</h1>";
                 foreach ($users as $user)
                 {
-                    $content = $content . "<a href=\"/posts?id={$user->id}\">";
+                    $content = $content . "<a href=\"/user?id={$user->id}\">";
                     $content = $content . '<div class="userBox">';
                     $content = $content . '<p>' . $user->email . '<p>' ;
                     $content = $content . '</div>';

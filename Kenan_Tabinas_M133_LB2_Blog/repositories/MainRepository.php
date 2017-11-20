@@ -31,18 +31,33 @@ class MainRepository
 
     protected function prepareStatement($query,  $binds = null, $questionMarks = null)
     {
+
         $stmt = $this->mysqli->prepare($query);
 
         if ($stmt == false) throw new Exception("Db prepare error");
 
         if ($binds != null && $questionMarks != null)
         {
-            var_dump($binds);
+
             $stmt->bind_param($questionMarks, $binds);
         }
 
         if (!$stmt->execute()) throw new Exception("Execution error - Throwed Exception");
 
         return $stmt;
+    }
+
+    protected function getOneColumn($query, $binds = null, $questionMarks = null)
+    {
+        $stmt = $this->prepareStatement($query, $binds, $questionMarks);
+        $stmt->bind_result($column);
+
+        $columns = array();
+
+        while ($stmt->fetch())
+        {
+            array_push($columns, $column);
+        }
+        return $columns;
     }
 }

@@ -59,12 +59,23 @@ class UserRepository extends MainRepository
 
     }
 
+    public function getAllEmails()
+    {
+        $query = "SELECT email FROM `user`";
+        return $this->getOneColumn($query);
+    }
+
+    public function getAllUsernames()
+    {
+        return $this->getAllEmails();
+    }
+
     public function getEmailById($id)
     {
-        var_dump($id);
         $query = "SELECT email FROM `user` WHERE id = ?";
         $stmt = $this->prepareStatement($query, $id, 's');
         $stmt->bind_result($email);
+        $stmt->fetch();
         return $email;
     }
 

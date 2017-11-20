@@ -17,6 +17,7 @@ body {
 
 h1 {
     text-transform: uppercase;
+    text-align: center;
 }
 
 .postBox
@@ -28,7 +29,7 @@ h1 {
 }
 
 .userBox {
-    padding: 4vw 4vw 4vw 4vw;
+    padding: 2.5vw 5.25vw 2.5vw 5.25vw;
     float: left;
     background-color: ghostwhite;
     margin: 1vw 1vw 1vw 1vw;
