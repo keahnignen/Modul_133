@@ -125,7 +125,9 @@ class View {
         {
             $content = $content . "<a href=\"/post?id={$post->id}\">";
             $content = $content . '<div class="postBox">';
+            $content = $content . '<h2>' . $post->title . '</h2>';
             $content = $content . '<p>' . $post->text . '<p>' ;
+            $content = $content . '<p>' . $post->date . '</p>';
             $content = $content . '</div>';
             $content = $content . '</a>';
         }

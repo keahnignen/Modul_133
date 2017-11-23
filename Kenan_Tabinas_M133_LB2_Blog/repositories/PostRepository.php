@@ -34,18 +34,20 @@ class PostRepository extends MainRepository
     {
         $stmt = $this->prepareStatement($query, $binds, $questionMarks);
 
-        $stmt->bind_result($id, $text, $topic_id, $user_id);
+        $stmt->bind_result($id, $text, $topic_id, $user_id, $title, $date);
 
         $users = array();
 
         while ($stmt->fetch())
         {
-            $userModel = new PostModel();
-            $userModel->id = $id;
-            $userModel->text = $text;
-            $userModel->topic_id = $topic_id;
-            $userModel->user_id = $user_id;
-            array_push($users, $userModel);
+            $postModel = new PostModel();
+            $postModel->id = $id;
+            $postModel->text = $text;
+            $postModel->topic_id = $topic_id;
+            $postModel->user_id = $user_id;
+            $postModel->date = $date;
+            $postModel->title = $title;
+            array_push($users, $postModel);
         }
 
         return $users;

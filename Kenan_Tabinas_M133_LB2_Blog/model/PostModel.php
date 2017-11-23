@@ -31,4 +31,15 @@ class PostModel
 
     public $topic_id;
 
+    /**
+     * @var \MongoDB\BSON\Timestamp
+     */
+
+    public $date;
+
+    /**
+     * @var string
+     */
+
+    public $title;
 }

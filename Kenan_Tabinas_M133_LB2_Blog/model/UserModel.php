@@ -36,4 +36,10 @@ class UserModel
      */
     public $isAdmin;
 
+
+    /**
+     * @var int
+     */
+    public $picture_id;
+
 }
