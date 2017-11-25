@@ -20,7 +20,7 @@ class UserRepository extends MainRepository
 
         $stmt = $this->prepareStatement($query);
 
-        $stmt->bind_result($id, $username, $email, $password, $isAdmin);
+        $stmt->bind_result($id, $username, $email, $password, $isAdmin, $picture_id);
 
         $users = array();
 
@@ -32,6 +32,7 @@ class UserRepository extends MainRepository
             $userModel->email = $email;
             $userModel->password = $password;
             $userModel->isAdmin = $isAdmin;
+            $userModel->picture_id = $picture_id;
             array_push($users, $userModel);
         }
 
