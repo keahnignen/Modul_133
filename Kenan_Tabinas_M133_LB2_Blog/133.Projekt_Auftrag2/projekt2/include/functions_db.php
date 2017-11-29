@@ -32,9 +32,9 @@
   }
 
   /************************************************************************************************
-   getUserName:	Liefert den Namen der übergebenen User-ID zurück
+   getUserName:	Liefert den Namen der übergebenen UserView-ID zurück
    Hinweis:		Ist nützlich, um den Benutzer z.B. mit "Willkommen 'Marc Muster'" zu begrüssen
-   $uid:		User-ID des gewünschten Benutzers
+   $uid:		UserView-ID des gewünschten Benutzers
    Rückgabe:	- Name, falls vorhanden (NULL-Wert möglich)
 				- Mailadresse, falls Name = NULL
 				- Leerer String, falls Benutzer-ID nicht vorhanden
@@ -293,9 +293,9 @@
   /************************************************************************************************
    addComment: Schreibt einen neuen Kommentar in die DB, Variante 1
    Variante 1: Der Benutzer muss angemeldet sein, um einen Kommentar zu schreiben. In diesem
-			   Fall wird die User-ID als Fremdschlüssel in die Tabelle geschrieben.
+			   Fall wird die UserView-ID als Fremdschlüssel in die Tabelle geschrieben.
    $eid:	   Entry-ID - ID des Beitrgs, zu dem der Kommentar geschrieben wird
-   $uid:	   User-ID - ID des Benutzers, der den Kommentar schreibt
+   $uid:	   UserView-ID - ID des Benutzers, der den Kommentar schreibt
    $content:   Der Inhalt des Beitrags
    time():	   Erstellt den aktuellen UNIX-Timestamp
    Rückgabe:   - True bei Erfolg
@@ -369,12 +369,12 @@
 
   /************************************************************************************************
    getTopics:	Liefert alle Themen eines Benutzers zurück
-   $uid:		User-ID des gewünschten Benutzers
+   $uid:		UserView-ID des gewünschten Benutzers
    Rückgabe:	2-dimensionales Array, 
 				- 1. Dimension = Thema
 				- 2. Dimension = Attribute des Themas
 					* Topic-ID
-					* User-ID
+					* UserView-ID
 					* Name bzw. Bezeichnung des Themas, darf nicht leer sein
 					* Beschreibung des Themas, kann leer sein (NULL bzw. leerer String)
    Sortierung:	Nach Name des Themas

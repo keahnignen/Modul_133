@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Keahnignen
+ * UserView: Keahnignen
  * Date: 18/11/2017
  * Time: 23:52
  */
@@ -65,4 +65,6 @@ class PostRepository extends MainRepository
         $query = "SELECT * FROM post where id = ?";
         return $this->executeStatement($query, $id, 's');
     }
+
+
 }

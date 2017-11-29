@@ -1,6 +1,7 @@
 
 body {
     font-family: 'Titillium Web', sans-serif;
+
 }
 
 .content {
@@ -20,18 +21,29 @@ h1 {
     text-align: center;
 }
 
+
+.postBox, .userBox {
+    box-shadow: 5px 5px 5px lightgrey;
+
+}
+
+.postBox:hover, .userBox:hover {
+    box-shadow: 7px 7px 7px darkgray;
+    background-color: ghostwhite;
+}
+
 .postBox
 {
     padding: 5vw 5vw 5vw 5vw;
-    box-shadow: 10px 10px 5px grey;
     margin-bottom: 2vw;
-    background-color: ghostwhite;
 }
 
 .userBox {
     padding: 2.5vw 5.25vw 2.5vw 5.25vw;
     float: left;
-    background-color: ghostwhite;
     margin: 1vw 1vw 1vw 1vw;
-    box-shadow: 10px 10px 5px grey;
+}
+
+.erorrMessage {
+    color: red;
 }

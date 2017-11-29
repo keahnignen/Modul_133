@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Keahnignen
+ * UserView: Keahnignen
  * Date: 18/11/2017
  * Time: 14:53
  */
@@ -80,6 +80,10 @@ class UserRepository extends MainRepository
         return $email;
     }
 
-
+    public function getIdByEmail($email)
+    {
+        $query = "SELECT id FROM user where email = ?";
+        return $this->getOneColumn($query, $email, 's');
+    }
 
 }
