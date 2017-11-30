@@ -10,6 +10,6 @@ class UserController
 {
     public function isPasswordCorrect($email, $password)
     {
-        return false;
+        return true;
     }
 }

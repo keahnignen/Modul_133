@@ -50,7 +50,7 @@ class UserRepository extends MainRepository
         return false;
     }
 
-    public function getUserById($id)
+    public function getUsernameById($id)
     {
         return $this->getEmailById($id);
     }

@@ -11,14 +11,11 @@ class UserView extends MainView
 
     public function makeContent()
     {
-        var_dump(self::$queryStrings);
-
-        var_dump(self::$queryStrings);
 
         if (is_numeric(self::$queryStrings["id"]))
         {
             $repository = new UserRepository();
-            $email = $repository->getUserById(self::$queryStrings["id"]);
+            $email = $repository->getUsernameById(self::$queryStrings["id"]);
             self::$content .= "<h1>{$email}</h1>";
             $repository = new PostRepository();
             self::$content = $this->getPostString($repository->getAllPostByUser(self::$queryStrings["id"]), self::$content);

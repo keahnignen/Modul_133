@@ -16,16 +16,8 @@ class AreaView extends MainView
 
         $controller = new UserController();
 
-        var_dump(isset($_SESSION['id']));
-
         if (isset(self::$uriFragments[1]))
         {
-
-            if (isset($_SESSION['id']))
-            {
-                $this->userArea();
-                return;
-            }
 
             switch (self::$uriFragments[1])
             {
@@ -52,9 +44,19 @@ class AreaView extends MainView
                     }
 
                     break;
+                case 'logout':
+                    if (isset($_SESSION['id'])) unset($_SESSION['id']);
+                    header('Location: /');
+                    exit();
                 default:
                     break;
             }
+        }
+
+        if (isset($_SESSION['id']))
+        {
+            $this->userArea();
+            return;
         }
 
         $this->displayLoginOrRegister();
@@ -74,6 +76,10 @@ class AreaView extends MainView
 
     public function userArea()
     {
-
+        $u = new UserRepository();
+        self::$headerText = ' Logout';
+        self::$href = ' href="/area/logout" ';
+        $html = file_get_contents('..\view\area.html');
+        self::$content .= str_replace('<!--Username-->', $u->getUsernameById($_SESSION['id'][0]), $html);
     }
 }

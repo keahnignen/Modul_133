@@ -16,10 +16,16 @@ class MainView {
 
     protected static $uriFragments;
 
+    protected static $headerText;
+
+    protected static $href;
+
     public function __construct()
     {
        $this->initUriFragments();
        $this->initQueryString();
+       self::$headerText = ' UserArea';
+       self::$href = 'href="/area"';
     }
 
     public function displayPage()
@@ -80,6 +86,7 @@ class MainView {
     }
 
 
+
     private function initUriFragments()
     {
         $uri = $_SERVER['REQUEST_URI'];
@@ -90,7 +97,9 @@ class MainView {
 
     private function getNavbar()
     {
-        return file_get_contents('..\view\header.html');
+        $header = file_get_contents('..\view\header.html');
+        $newHeader = str_replace('<!--Header-->', self::$headerText, $header);
+        return str_replace('<!--href-->', self::$href, $newHeader);
     }
 
     private function getLayout()
