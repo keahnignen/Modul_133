@@ -1,6 +1,7 @@
 
 body {
     font-family: 'Titillium Web', sans-serif;
+
 }
 
 .content {
@@ -21,6 +22,7 @@ h1 {
 }
 
 
+<<<<<<< HEAD
 
 .postbox:hover, .userBox:hover {
     box-shadow: 8px 8px 8px grey;
@@ -33,11 +35,26 @@ h1 {
 }
 
 
+=======
+.postBox, .userBox {
+    box-shadow: 5px 5px 5px lightgrey;
+
+}
+
+.postBox:hover, .userBox:hover {
+    box-shadow: 7px 7px 7px darkgray;
+    background-color: ghostwhite;
+}
+
+>>>>>>> d24da2b3c798e6d1967d6728ddcfb1b5fa347374
 .postBox
 {
     padding: 5vw 5vw 5vw 5vw;
     margin-bottom: 2vw;
+<<<<<<< HEAD
 
+=======
+>>>>>>> d24da2b3c798e6d1967d6728ddcfb1b5fa347374
 }
 
 
@@ -45,4 +62,12 @@ h1 {
     padding: 2.5vw 5.25vw 2.5vw 5.25vw;
     float: left;
     margin: 1vw 1vw 1vw 1vw;
+<<<<<<< HEAD
 }
+=======
+}
+
+.erorrMessage {
+    color: red;
+}
+>>>>>>> d24da2b3c798e6d1967d6728ddcfb1b5fa347374

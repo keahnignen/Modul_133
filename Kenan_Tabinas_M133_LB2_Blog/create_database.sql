@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `blog`.`post` (
   `user_id` INT NOT NULL,
   `topic_id` INT NOT NULL,
   `title` VARCHAR(45) NULL,
-  `update` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `update` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   INDEX `fk_post_user_idx` (`user_id` ASC),
   INDEX `fk_post_topic1_idx` (`topic_id` ASC),

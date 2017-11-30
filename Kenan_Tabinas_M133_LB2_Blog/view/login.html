@@ -2,7 +2,7 @@
 <!--
 **
  * Created by PhpStorm.
- * User: vmadmin
+ * UserView: vmadmin
  * Date: 26.10.2017
  * Time: 15:02
  */
@@ -13,20 +13,19 @@
 	<div class="registerInner">
         <div class="col-md-6 signUp">
             <h3 class="headerSign">Sign Up</h3>
-            <form action="/register" method="post">
+            <form action="area/register" method="post">
 
 
                 <div class="form-group">
-                    <input class="form-control" name="username" id="username_login" placeholder="USERNAME">
-                </div>
-
-
-                <div class="form-group">
-                    <input class="form-control" type="email" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="YOUR EMAIL">
+                    <input class="form-control" name="username" id="username" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,10}$" placeholder="EMAIL">
                 </div>
 
                 <div class="form-group ">
-                    <input class="form-control" type="password" name="password" id="password_login" value="" placeholder="PASSWORD">
+                    <input class="form-control" type="password" name="password" id="password" value="" placeholder="PASSWORD">
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="password" name="control_password" id="control_password" placeholder="PASSWORD CONFIRM">
                 </div>
 
 
@@ -39,14 +38,13 @@
         <!--Sign In-->
         <div class ="col-md-6">
             <h3 class="headerSign">Sign In</h3>
-            <form action="/login" method="post">
-
+            <form action="/area/login" method="post">
                 <div class="form-group">
-                    <input class="form-control" name="username" id="username_register" placeholder="USERNAME">
+                    <input class="form-control" name="email_login" id="email_login" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,10}$" placeholder="EMAIL">
                 </div>
 
                 <div class="form-group">
-                    <input class="form-control" type="password" name="password" id="password_register" placeholder="PASSWORD" value="">
+                    <input class="form-control" type="password" name="password_login" id="password_login" placeholder="PASSWORD" value="">
                 </div>
 
                 <button class="signbuttons btn btn-primary">Sign In</button>
