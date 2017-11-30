@@ -45,7 +45,7 @@ class AreaView extends MainView
 
                     break;
                 case 'logout':
-                    if (isset($_SESSION['id'])) unset($_SESSION['id']);
+                    if (isset($_SESSION['id'])) session_destroy();
                     header('Location: /');
                     exit();
                 default:
