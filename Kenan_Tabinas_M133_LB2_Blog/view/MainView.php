@@ -97,7 +97,7 @@ class MainView {
 
     private function getNavbar()
     {
-        $header = file_get_contents('..\view\header.html');
+        $header = file_get_contents('..\view\html\header.html');
         $newHeader = str_replace('<!--Header-->', self::$headerText, $header);
         return str_replace('<!--href-->', self::$href, $newHeader);
     }
@@ -105,7 +105,7 @@ class MainView {
     private function getLayout()
     {
 
-        $layout = file_get_contents('..\view\layout.html');
+        $layout = file_get_contents('..\view\html\layout.html');
 
         $uri = $_SERVER['REQUEST_URI'];
         $uriFragments = explode('/', $uri);

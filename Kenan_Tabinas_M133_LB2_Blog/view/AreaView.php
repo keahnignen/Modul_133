@@ -48,6 +48,12 @@ class AreaView extends MainView
                     if (isset($_SESSION['id'])) session_destroy();
                     header('Location: /');
                     exit();
+
+
+                case 'posts':
+                    $this->displayManagePosts();
+                    return;
+
                 default:
                     break;
             }
@@ -71,15 +77,22 @@ class AreaView extends MainView
 
     private function displayLoginOrRegister()
     {
-        self::$content .= file_get_contents('..\view\login.html');
+        self::$content .= file_get_contents('..\view\html\login.html');
     }
+
+
+    private function displayManagePosts()
+    {
+        self::$content .= file_get_contents('..\view\html\area\posts');
+    }
+
 
     public function userArea()
     {
         $u = new UserRepository();
         self::$headerText = ' Logout';
-        self::$href = ' href="/area/logout" ';
-        $html = file_get_contents('..\view\area.html');
+        self::$href = ' href="/logout" ';
+        $html = file_get_contents('..\view\html\area.html');
         self::$content .= str_replace('<!--Username-->', $u->getUsernameById($_SESSION['id'][0]), $html);
     }
 }
