@@ -66,5 +66,17 @@ class PostRepository extends MainRepository
         return $this->executeStatement($query, $id, 's');
     }
 
+    public function deletePost($id)
+    {
+        $query = "DELETE FROM post WHERE id = ?";
+    }
+
+    public function editPost($content, $id)
+    {
+        $binds = array($content, $id);
+        $query = "UPDATE post SET text = ? WHERE id = ?";
+        return $this->prepareStatement($query, $binds, 'ss');
+    }
+
 
 }

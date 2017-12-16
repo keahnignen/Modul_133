@@ -12,7 +12,8 @@ require_once '..\repositories\UserRepository.php';
 require_once '..\repositories\PostRepository.php';
 require_once '..\model\UserModel.php';
 require_once '..\model\PostModel.php';
-
+require_once '..\controller\PostController.php';
+require_once '..\controller\UserController.php';
 
 session_start();
 

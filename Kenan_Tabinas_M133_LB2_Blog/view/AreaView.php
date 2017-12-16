@@ -25,30 +25,24 @@ class AreaView extends MainView
 
                     if (isset($_POST['password_login']) && isset($_POST['email_login']))
                     {
-                        var_dump('Varabile-Exsists');
                         if ($controller->isPasswordCorrect($_POST['email_login'], $_POST['password_login']))
                         {
-
                             $repo = new UserRepository();
                             $_SESSION['id'] = $repo->getIdByEmail($_POST['email_login']);
-                            var_dump($repo->getIdByEmail($_POST['email_login']) . 'session id is set');
-                            var_dump('<br> sdsa ');
                             header('Location: /area');
                             exit();
                         }
                         else
                         {
-                            var_dump('NotSet');
-                           $this->displayError('Password or Email is wrong');
+                            $this->displayError('Password or Email is wrong');
                         }
                     }
 
                     break;
+
                 case 'logout':
                     if (isset($_SESSION['id'])) session_destroy();
-                    header('Location: /');
                     exit();
-
 
                 case 'posts':
                     $this->displayManagePosts();
@@ -83,7 +77,60 @@ class AreaView extends MainView
 
     private function displayManagePosts()
     {
-        self::$content .= file_get_contents('..\view\html\area\posts');
+        if (self::$queryStrings == null)
+        {
+
+            self::$content .= file_get_contents('..\view\html\area\posts.html');
+            require_once '..\view\PostView.php';
+            $view = new PostView();
+            $view->addEditablePosts();
+        }
+        else {
+
+            $index = null;
+
+            $delete = "delete";
+
+            $edit = "edit";
+
+
+            if (array_key_exists($delete, self::$queryStrings))
+            {
+                $index = $delete;
+            }
+
+            if (array_key_exists($edit, self::$queryStrings))
+            {
+                $index = $edit;
+            }
+
+            if ($index != null)
+            {
+                if (isset(self::$queryStrings[$index]))
+                {
+
+                    if (is_numeric(self::$queryStrings[$index]))
+                    {
+
+                        $controller = new PostController();
+
+                        switch ($index)
+                        {
+                            case $delete:
+                                $controller->deletePost(self::$queryStrings[$index]);
+                                break;
+                            case $edit:
+                                $controller->editPost(self::$queryStrings[$index]);
+                                break;
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+
     }
 
 
@@ -91,8 +138,9 @@ class AreaView extends MainView
     {
         $u = new UserRepository();
         self::$headerText = ' Logout';
-        self::$href = ' href="/logout" ';
+        self::$href = ' href="/area/logout" ';
         $html = file_get_contents('..\view\html\area.html');
         self::$content .= str_replace('<!--Username-->', $u->getUsernameById($_SESSION['id'][0]), $html);
     }
+
 }

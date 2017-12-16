@@ -9,7 +9,6 @@
 
 class MainView {
 
-
     protected static $content;
 
     protected static $queryStrings;
@@ -65,7 +64,6 @@ class MainView {
         $this->makeContents();
     }
 
-
     private function makeContents()
     {
 
@@ -84,8 +82,6 @@ class MainView {
 
 
     }
-
-
 
     private function initUriFragments()
     {
@@ -124,7 +120,6 @@ class MainView {
         return $layout;
     }
 
-
     protected function initQueryString()
     {
         if (self::$queryStrings == null)
@@ -145,22 +140,36 @@ class MainView {
 
     }
 
-
-    protected function getPostString($posts, $content)
+    protected function getPostString($posts, $content, $showEditButton = false)
     {
         foreach ($posts as $post)
         {
-            $content .= "<a href=\"/post?id={$post->id}\">";
+            if (!$showEditButton)
+            {
+                $content .= "<a href=\"/post?id={$post->id}\">";
+            }
+
             $content .= '<div class="postBox">';
             $content .= '<h2>' . $post->title . '</h2>';
             $content .= '<p>' . $post->text . '<p>' ;
+
+            if ($showEditButton)
+            {
+                $content .= "<a href=\"/area/posts?delete={$post->id}\"><p>Delete</p></a>";
+                $content .= "<a href=\"/area/posts?edit={$post->id}\"><p>Edit</p></a>";
+            }
+
             $content .= '<p>' . $post->date . '</p>';
             $content .= '</div>';
-            $content .= '</a>';
+
+            if (!$showEditButton)
+            {
+                $content .= '</a>';
+            }
+
+
         }
         return $content;
     }
-
-
 
 }

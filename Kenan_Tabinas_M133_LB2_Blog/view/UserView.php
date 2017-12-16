@@ -11,7 +11,6 @@ class UserView extends MainView
 
     public function makeContent()
     {
-
         if (is_numeric(self::$queryStrings["id"]))
         {
             $repository = new UserRepository();
