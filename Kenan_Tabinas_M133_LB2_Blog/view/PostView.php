@@ -37,4 +37,41 @@ class PostView extends MainView
         }
     }
 
+    public function addEditPost($id = null)
+    {
+        $html = file_get_contents('..\view\html\area\editPost.html');
+
+
+        $areaTextContent = "";
+
+        $replace = '?addPost=0';
+
+        if ($id != null)
+        {
+            //edit existing post
+
+            $p = new PostRepository();
+
+            $post = $p->getPostById($id);
+
+            $post = $post[0];
+
+            $title = " value='" . $post->title . "' >";
+
+            $replace = '?update='.$post->id;
+
+            $html = str_replace('<!--TITLE-VALUE-->', $title, $html);
+
+            $areaTextContent = $post->text;
+
+        }
+
+        $html = str_replace('<!--CONTENT-VALUE-->', $areaTextContent, $html);
+
+        $html = str_replace('<!--TEXT-->', $replace, $html);
+
+        self::$content .= $html;
+
+    }
+
 }

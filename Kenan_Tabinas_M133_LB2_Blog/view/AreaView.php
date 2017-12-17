@@ -93,6 +93,14 @@ class AreaView extends MainView
 
             $edit = "edit";
 
+            $update = "update";
+
+            $newPost = "newPost";
+
+            $addPost = "addPost";
+
+
+            var_dump("asdasd");
 
             if (array_key_exists($delete, self::$queryStrings))
             {
@@ -102,6 +110,22 @@ class AreaView extends MainView
             if (array_key_exists($edit, self::$queryStrings))
             {
                 $index = $edit;
+            }
+
+
+            if (array_key_exists($update, self::$queryStrings))
+            {
+                $index = $update;
+            }
+
+            if (array_key_exists($newPost, self::$queryStrings))
+            {
+                $index = $newPost;
+            }
+
+            if (array_key_exists($addPost, self::$queryStrings))
+            {
+                $index = $addPost;
             }
 
             if ($index != null)
@@ -121,6 +145,15 @@ class AreaView extends MainView
                                 break;
                             case $edit:
                                 $controller->editPost(self::$queryStrings[$index]);
+                                break;
+                            case $update:
+                                $controller->updatePost(self::$queryStrings[$index]);
+                                break;
+                            case $newPost:
+                                $controller->newPost();
+                                break;
+                            case $addPost:
+                                $controller->addPost();
                                 break;
                         }
                     }

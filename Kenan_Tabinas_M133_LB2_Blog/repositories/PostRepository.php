@@ -56,7 +56,7 @@ class PostRepository extends MainRepository
 
     public function getAllPostByUser($id)
     {
-        $query = "SELECT * FROM post where user_id = ?";
+        $query = "SELECT * FROM post where user_id = ? ORDER BY post.update DESC";
         return $this->executeStatement($query, $id, 's');
     }
 
@@ -68,14 +68,26 @@ class PostRepository extends MainRepository
 
     public function deletePost($id)
     {
+        $binds = array($id);
         $query = "DELETE FROM post WHERE id = ?";
+        $this->prepareStatement($query, $binds, 'i');
+        return;
     }
 
-    public function editPost($content, $id)
+    public function updatePost($post)
     {
-        $binds = array($content, $id);
-        $query = "UPDATE post SET text = ? WHERE id = ?";
-        return $this->prepareStatement($query, $binds, 'ss');
+        $binds = array($post->title, $post->text, intval($post->id));
+        $query = "UPDATE   post SET title=?, text=? WHERE id = ?";
+        $this->prepareStatement($query, $binds, 'ssi');
+        return;
+    }
+
+    public function newPost($post)
+    {
+        $binds = array($post->title, $post->text);
+        $query = "INSERT INTO post (text, user_id, topic_id, title) VALUES (?, {$_SESSION["id"][0]}, 1, ?)";
+        $this->prepareStatement($query, $binds, 'ss');
+        return;
     }
 
 

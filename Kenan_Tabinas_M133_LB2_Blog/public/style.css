@@ -54,3 +54,7 @@ h1 {
 .erorrMessage {
     color: red;
 }
+
+textarea {
+    resize: none;
+}

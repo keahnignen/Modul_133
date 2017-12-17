@@ -7,6 +7,7 @@
  */
 
 require_once '..\view\MainView.php';
+require_once '..\view\PostView.php';
 require_once '..\repositories\MainRepository.php';
 require_once '..\repositories\UserRepository.php';
 require_once '..\repositories\PostRepository.php';

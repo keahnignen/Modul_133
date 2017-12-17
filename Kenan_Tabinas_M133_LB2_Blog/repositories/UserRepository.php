@@ -86,4 +86,5 @@ class UserRepository extends MainRepository
         return $this->getOneColumn($query, $email, 's');
     }
 
+
 }

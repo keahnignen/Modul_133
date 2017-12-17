@@ -34,17 +34,44 @@ class MainRepository
 
         $stmt = $this->mysqli->prepare($query);
 
+
         if ($stmt == false) throw new Exception("Db prepare error");
 
         if ($binds != null && $questionMarks != null)
         {
 
-            $stmt->bind_param($questionMarks, $binds);
+            if (!is_array($binds))
+            {
+                $binds = array($binds);
+            }
+
+            $parameters = array();
+
+            array_push($parameters, $questionMarks);
+
+            foreach ($binds as $bind)
+            {
+                array_push($parameters, $bind);
+            }
+
+            call_user_func_array(array($stmt, 'bind_param'), $this->getRefValue($parameters));
+
+            //$stmt->bind_param($questionMarks, $binds);
         }
 
         if (!$stmt->execute()) throw new Exception("Execution error - Throwed Exception");
 
         return $stmt;
+    }
+
+
+
+    private function getRefValue($arr)
+    {
+        $refs = array();
+        foreach($arr as $key => $value)
+            $refs[$key] = &$arr[$key];
+        return $refs;
     }
 
     protected function getOneColumn($query, $binds = null, $questionMarks = null)
