@@ -41,7 +41,6 @@ class PostView extends MainView
     {
         $html = file_get_contents('..\view\html\area\editPost.html');
 
-
         $areaTextContent = "";
 
         $replace = '?addPost=0';
@@ -71,7 +70,10 @@ class PostView extends MainView
         $html = str_replace('<!--TEXT-->', $replace, $html);
 
         self::$content .= $html;
-
     }
 
+    public function addComment()
+    {
+
+    }
 }

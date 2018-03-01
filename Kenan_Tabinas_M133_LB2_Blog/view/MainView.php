@@ -41,7 +41,7 @@ class MainView {
         if (!empty(self::$uriFragments[0])) {
             $viewName = self::$uriFragments[0];
             $viewName = ucfirst($viewName);
-            $viewName .= 'View';
+            $viewName .= 'Display';
             $path = '..\\view\\'. $viewName .'.php';
 
             if (file_exists($path)) {
@@ -166,7 +166,6 @@ class MainView {
             {
                 $content .= '</a>';
             }
-
 
         }
         return $content;

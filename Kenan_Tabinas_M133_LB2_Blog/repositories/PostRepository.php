@@ -56,7 +56,7 @@ class PostRepository extends MainRepository
 
     public function getAllPostByUser($id)
     {
-        $query = "SELECT * FROM post where user_id = ? ORDER BY post.update DESC";
+        $query = "SELECT * FROM post where user_id = ? ORDER BY post.date DESC";
         return $this->executeStatement($query, $id, 's');
     }
 
