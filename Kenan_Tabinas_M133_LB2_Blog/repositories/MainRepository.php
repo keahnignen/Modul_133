@@ -12,7 +12,14 @@ class MainRepository
 
     public function __construct()
     {
-        $this->mysqli = new mysqli('127.0.0.1', 'root', '', 'blog');
+        $this->mysqli = new mysqli('localhost', 'root', '', 'blog');
+
+
+        if ($this->mysqli->connect_error)
+        {
+            throw new Exception("Metalica");
+        }
+
 
         if (mysqli_connect_errno())
         {
@@ -33,6 +40,7 @@ class MainRepository
     {
 
         $stmt = $this->mysqli->prepare($query);
+
 
 
         if ($stmt == false) throw new Exception("Db prepare error");

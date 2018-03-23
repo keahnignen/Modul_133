@@ -12,7 +12,7 @@ class AreaView extends MainView
     public function makeContent()
     {
 
-        require_once '..\controller\UserController.php';
+
 
         $controller = new UserController();
 
