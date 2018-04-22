@@ -13,15 +13,15 @@ class GlobalVariables
 
     private static $idIndex = "id";
 
-
     public static $uriFragments;
 
     public static $queryStrings;
 
 
+
     private function __construct()
     {
-        self::$idIndex = (isset($_SESSION[self::$idIndex]) && $_SESSION[self::$idIndex] != null);
+        self::$IsSessionIdSet = (isset($_SESSION[self::$idIndex]) && $_SESSION[self::$idIndex] != null);
         self::initQueryString();
         self::initUriFragments();
     }
@@ -31,6 +31,7 @@ class GlobalVariables
 
     public static function GetSessionId()
     {
+
         return $_SESSION[self::$idIndex];
     }
 
@@ -38,7 +39,6 @@ class GlobalVariables
     {
         $_SESSION[self::$idIndex] = $id;
     }
-
 
     private static function initUriFragments()
     {

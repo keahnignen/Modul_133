@@ -9,9 +9,40 @@
 class ViewCreator
 {
 
-    public static function CreateHomepage()
+    private static function getLayoutWithCss()
     {
 
+        $layout = file_get_contents('..\view\html\layout.html');
+
+        $uri = $_SERVER['REQUEST_URI'];
+        $uriFragments = explode('/', $uri);
+
+        $begin = '<link href="';
+
+        foreach ($uriFragments as $uriFragment)
+        {
+            $begin = $begin . '..\\';
+        }
+
+        $fullCssString = $begin . 'style.css" type="text/css" rel="stylesheet">';
+
+        $layout = str_replace('<!--CSS-->', $fullCssString, $layout);
+
+        return $layout;
     }
+
+
+    public static function CreateHomepage()
+    {
+        $content = "";
+        self::displayPage($content);
+    }
+
+    private static function displayPage($content)
+    {
+        $content = Navbar::getNavbar() . $content . '</div>';
+        echo str_replace('<!--THIS_WILL_BE_REPLACED-->', $content, self::getLayoutWithCss());
+    }
+
 
 }

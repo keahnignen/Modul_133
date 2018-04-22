@@ -1,4 +1,4 @@
-*<?php
+<?php
 /**
  * Created by PhpStorm.
  * UserView: Keahnignen
@@ -6,12 +6,14 @@
  * Time: 15:17
  */
 
+
 class MainRepository
 {
     protected $mysqli;
 
     public function __construct()
     {
+
         $this->mysqli = new mysqli('localhost', 'root', '', 'blog');
 
 
@@ -19,6 +21,7 @@ class MainRepository
         {
             throw new Exception("Metalica");
         }
+
 
 
         if (mysqli_connect_errno())
