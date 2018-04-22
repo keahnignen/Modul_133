@@ -45,9 +45,9 @@ class UserRepository extends MainRepository
         return false;
     }
 
-    public function isEmailTaken()
+    public function isEmailTaken($email)
     {
-        return false;
+
     }
 
     public function getUsernameById($id)

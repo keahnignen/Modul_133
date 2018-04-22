@@ -34,7 +34,7 @@ class ViewCreator
 
     public static function CreateHomepage()
     {
-        $content = "";
+        $content = "<h1>". GlobalVariables::$ApplicationName ."</h1>";
         self::displayPage($content);
     }
 

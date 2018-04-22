@@ -18,13 +18,14 @@ class Navbar
     {
         $navbarHtml = file_get_contents('..\view\html\header.html');
         $newNavbarHtml = str_replace('<!--Header-->', $text, $navbarHtml);
-        return str_replace('<!--href-->', $link, $newNavbarHtml);
+        $newNavbarHtmlWithName = str_replace('<!--ApplicationName-->', GlobalVariables::$ApplicationName, $newNavbarHtml);
+        return str_replace('<!--href-->', $link, $newNavbarHtmlWithName);
     }
 
 
     private static $textHeaderLogout = " Logout";
 
-    private static $linkHeaderLogout = "href = '\logout'";
+    private static $linkHeaderLogout = "href = '\\". Dispatcher::$Logout . "'";
 
     private static $textUserArea = " User Area";
 

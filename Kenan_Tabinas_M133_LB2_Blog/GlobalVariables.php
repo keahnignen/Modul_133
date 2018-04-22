@@ -9,6 +9,9 @@
 
 class GlobalVariables
 {
+
+    public static $ApplicationName = "Images[]";
+
     public static $HtmlContent = "<!--THIS_WILL_BE_REPLACED-->";
 
     private static $idIndex = "id";

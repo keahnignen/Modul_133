@@ -9,6 +9,9 @@
 class Dispatcher
 {
 
+    public static $UserArea = "userarea";
+
+    public static $Logout = "logout";
 
 
 
