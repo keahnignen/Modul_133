@@ -31,14 +31,7 @@ class ViewCreator
         return $layout;
     }
 
-
-    public static function CreateHomepage()
-    {
-        $content = "<h1>". GlobalVariables::$ApplicationName ."</h1>";
-        self::displayPage($content);
-    }
-
-    private static function displayPage($content)
+    public static function displayPage($content)
     {
         $content = Navbar::getNavbar() . $content . '</div>';
         echo str_replace('<!--THIS_WILL_BE_REPLACED-->', $content, self::getLayoutWithCss());

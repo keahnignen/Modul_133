@@ -16,9 +16,11 @@ class UserController
     public static function tryCreateUser($email, $password)
     {
 
-        if (self::isPasswordValid($password))
-        {
+        $s = self::isPasswordValid($password);
 
+        if (!$s)
+        {
+            return "Password must have a Spezial Character, an upper- and a lowercase letter, a number and must have 8 characters";
         }
 
         $ur = new UserRepository();
@@ -30,12 +32,27 @@ class UserController
 
     }
 
+
     private static function isPasswordValid($password)
     {
-        $regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})";
-        $bla = preg_match($regex, $password);
-        var_dump($bla);
-        die();
+        $regex = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})";
+        return preg_match("/". $regex . "/", $password);
+    }
+
+    public static function CreateUser()
+    {
+        $b = self::tryCreateUser($_POST['email'], $_POST['password']);
+        if ($b != true)
+        {
+            $asd = Area::Display();
+
+        }
+
+    }
+
+    public static function Login()
+    {
+
     }
 
 

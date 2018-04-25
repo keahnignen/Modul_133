@@ -1,17 +1,24 @@
 <?php
-
 /**
  * Created by PhpStorm.
- * User: vmadmin
- * Date: 01.03.2018
- * Time: 14:58
+ * User: Kenan
+ * Date: 25/04/2018
+ * Time: 12:56
  */
 
 class Area
 {
 
-    public function Swag()
+    public static function Display()
     {
+
+        $fileName = file_get_contents('..\view\html\login.html');
+
+        $file = str_replace("<!--login-->", "action='" . Dispatcher::$Login . "''", $fileName);
+
+        $file = str_replace("<!--register-->", "action='" . Dispatcher::$Register . "''", $file);
+
+        return $file;
 
     }
 

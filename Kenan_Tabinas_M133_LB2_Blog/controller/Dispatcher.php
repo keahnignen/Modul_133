@@ -9,22 +9,32 @@
 class Dispatcher
 {
 
+
+
     public static $UserArea = "userarea";
 
     public static $Logout = "logout";
-
-
+    public static $Login = "login";
+    public static $Register = "register";
 
     public static function dispatch() {
 
+        $s = new GlobalVariables();
+
         switch (GlobalVariables::$uriFragments[0])
         {
-            case Dispatcher::$UserArea:
 
-                
+            case Dispatcher::$UserArea:
+                $content = Area::Display();
+                break;
+            case Dispatcher::$Register:
+                $content = UserController::CreateUser();
+                break;
             default:
-                ViewCreator::CreateHomepage();
+                $content = Homepage::Display();
         }
+
+        ViewCreator::displayPage($content);
     }
 
 }

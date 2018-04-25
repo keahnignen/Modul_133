@@ -22,7 +22,7 @@ class GlobalVariables
 
 
 
-    private function __construct()
+    public function __construct()
     {
         self::$IsSessionIdSet = (isset($_SESSION[self::$idIndex]) && $_SESSION[self::$idIndex] != null);
         self::initQueryString();
@@ -48,7 +48,10 @@ class GlobalVariables
         $uri = $_SERVER['REQUEST_URI'];
         $uri = strtok($uri, '?');
         $uri = trim($uri, '/');
-        self::$uriFragments = explode('/', $uri);
+
+        $bla = explode('/', $uri);
+
+        self::$uriFragments = $bla;
     }
 
 
