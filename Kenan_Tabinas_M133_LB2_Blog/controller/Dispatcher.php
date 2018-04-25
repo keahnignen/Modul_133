@@ -16,9 +16,14 @@ class Dispatcher
 
 
     public static function dispatch() {
-        if (!GlobalVariables::$uriFragments[0])
+
+        switch (GlobalVariables::$uriFragments[0])
         {
-            ViewCreator::CreateHomepage();
+            case Dispatcher::$UserArea:
+
+                
+            default:
+                ViewCreator::CreateHomepage();
         }
     }
 

@@ -5,47 +5,48 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema blog
+-- Schema images
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema blog
+-- Schema images
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `blog` DEFAULT CHARACTER SET utf8 ;
-USE `blog` ;
+CREATE SCHEMA IF NOT EXISTS `images` DEFAULT CHARACTER SET utf8 ;
+USE `images` ;
 
 -- -----------------------------------------------------
--- Table `blog`.`picture`
+-- Table `images`.`user`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `blog`.`picture` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `path` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`));
-
-
--- -----------------------------------------------------
--- Table `blog`.`user`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `blog`.`user` (
+CREATE TABLE IF NOT EXISTS `images`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
-  `isAdmin` TINYINT NOT NULL,
-  `picture_id` INT NOT NULL,
+  `isAdmin` TINYINT NULL,
+  PRIMARY KEY (`id`));
+
+
+-- -----------------------------------------------------
+-- Table `images`.`comment`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `images`.`comment` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `text` VARCHAR(255) NOT NULL,
+  `post_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_user_picture1_idx` (`picture_id` ASC),
-  CONSTRAINT `fk_user_picture1`
-    FOREIGN KEY (`picture_id`)
-    REFERENCES `blog`.`picture` (`id`)
+  INDEX `fk_comment_user1_idx` (`user_id` ASC),
+  CONSTRAINT `fk_comment_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `images`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
--- Table `blog`.`topic`
+-- Table `images`.`gallery`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `blog`.`topic` (
+CREATE TABLE IF NOT EXISTS `images`.`gallery` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `user_id` INT NOT NULL,
@@ -53,75 +54,51 @@ CREATE TABLE IF NOT EXISTS `blog`.`topic` (
   INDEX `fk_topic_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_topic_user1`
     FOREIGN KEY (`user_id`)
-    REFERENCES `blog`.`user` (`id`)
+    REFERENCES `images`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
--- Table `blog`.`post`
+-- Table `images`.`picture`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `blog`.`post` (
+CREATE TABLE IF NOT EXISTS `images`.`picture` (
+  `path` VARCHAR(45) NOT NULL,
+  `gallery_id` INT NOT NULL,
+  `path_thumpnail` VARCHAR(45) NULL,
+  INDEX `fk_picture_gallery1_idx` (`gallery_id` ASC),
+  CONSTRAINT `fk_picture_gallery1`
+    FOREIGN KEY (`gallery_id`)
+    REFERENCES `images`.`gallery` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+-- -----------------------------------------------------
+-- Table `images`.`tag`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `images`.`tag` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `text` VARCHAR(1000) NOT NULL,
-  `user_id` INT NOT NULL,
-  `topic_id` INT NOT NULL,
-  `title` VARCHAR(45) NULL,
-  `update` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  INDEX `fk_post_user_idx` (`user_id` ASC),
-  INDEX `fk_post_topic1_idx` (`topic_id` ASC),
-  CONSTRAINT `fk_post_user`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `blog`.`user` (`id`)
+  `tag` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
+
+-- -----------------------------------------------------
+-- Table `images`.`tag_gallery`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `images`.`tag_gallery` (
+  `tag_id` INT NOT NULL,
+  `gallery_id` INT NOT NULL,
+  INDEX `fk_tag_gallery_tag1_idx` (`tag_id` ASC),
+  INDEX `fk_tag_gallery_gallery1_idx` (`gallery_id` ASC),
+  CONSTRAINT `fk_tag_gallery_tag1`
+    FOREIGN KEY (`tag_id`)
+    REFERENCES `images`.`tag` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_post_topic1`
-    FOREIGN KEY (`topic_id`)
-    REFERENCES `blog`.`topic` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
-
--- -----------------------------------------------------
--- Table `blog`.`comment`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `blog`.`comment` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `text` VARCHAR(255) NOT NULL,
-  `post_id` INT NOT NULL,
-  `user_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_comment_post1_idx` (`post_id` ASC),
-  INDEX `fk_comment_user1_idx` (`user_id` ASC),
-  CONSTRAINT `fk_comment_post1`
-    FOREIGN KEY (`post_id`)
-    REFERENCES `blog`.`post` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_comment_user1`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `blog`.`user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
-
--- -----------------------------------------------------
--- Table `blog`.`post_picture`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `blog`.`post_picture` (
-  `post_id` INT NOT NULL,
-  `picture_id` INT NOT NULL,
-  PRIMARY KEY (`post_id`, `picture_id`),
-  INDEX `fk_post_picture_picture1_idx` (`picture_id` ASC),
-  CONSTRAINT `fk_post_picture_post1`
-    FOREIGN KEY (`post_id`)
-    REFERENCES `blog`.`post` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_post_picture_picture1`
-    FOREIGN KEY (`picture_id`)
-    REFERENCES `blog`.`picture` (`id`)
+  CONSTRAINT `fk_tag_gallery_gallery1`
+    FOREIGN KEY (`gallery_id`)
+    REFERENCES `images`.`gallery` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 

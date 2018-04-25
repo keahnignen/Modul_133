@@ -14,7 +14,7 @@ class MainRepository
     public function __construct()
     {
 
-        $this->mysqli = new mysqli('localhost', 'root', '', 'blog');
+        $this->mysqli = new mysqli('localhost', 'root', '', 'images');
 
 
         if ($this->mysqli->connect_error)

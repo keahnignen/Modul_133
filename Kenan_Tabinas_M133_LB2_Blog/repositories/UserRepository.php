@@ -47,7 +47,13 @@ class UserRepository extends MainRepository
 
     public function isEmailTaken($email)
     {
+        $query = "select email from user where email = ?";
+        $stmt = $this->prepareStatement($query, $email, 's');
+        $stmt->bind_result($bla);
+        $stmt->fetch();
 
+        var_dump($bla);
+        die();
     }
 
     public function getUsernameById($id)

@@ -3,14 +3,20 @@
 class Navbar
 {
 
+    public function __construct()
+    {
+        $this->linkHeaderLogout = "href = '\\" . Dispatcher::$Logout . "'";
+        $this->linkUserArea = "href = '\\" . Dispatcher::$UserArea . "'";
+    }
+
     public static function getNavbar()
     {
-
+        $nav = new Navbar();
         if (!GlobalVariables::$IsSessionIdSet)
         {
-            return self::getUserarea(self::$textUserArea, self::$linkUserArea);
+            return self::getUserarea($nav->textUserArea, $nav->linkUserArea);
         }
-        return self::getUserarea(self::$textHeaderLogout, self::$linkHeaderLogout);
+        return self::getUserarea($nav->textHeaderLogout, $nav->linkHeaderLogout);
 
     }
 
@@ -23,13 +29,13 @@ class Navbar
     }
 
 
-    private static $textHeaderLogout = " Logout";
+    private $textHeaderLogout = " Logout";
 
-    private static $linkHeaderLogout = "href = '\\". Dispatcher::$Logout . "'";
+    private $linkHeaderLogout;
+    private $linkUserArea;
+    private $textUserArea = " User Area";
 
-    private static $textUserArea = " User Area";
 
-    private static $linkUserArea = "href = '\userArea'";
 
 }
 
