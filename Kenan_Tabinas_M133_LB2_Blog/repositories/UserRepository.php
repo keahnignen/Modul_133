@@ -52,8 +52,7 @@ class UserRepository extends MainRepository
         $stmt->bind_result($bla);
         $stmt->fetch();
 
-        var_dump($bla);
-        die();
+         return $bla != null;
     }
 
     public function getUsernameById($id)
@@ -92,5 +91,11 @@ class UserRepository extends MainRepository
         return $this->getOneColumn($query, $email, 's');
     }
 
+    public function addUser($email, $password)
+    {
+        $query = "insert into user (username, email, PASSWORD, isAdmin) VALUES (?, ?, ?, FALSE)";
+        $binds = array("", $email, $password);
+        $this->prepareStatement($query,  $binds, 'sss');
+    }
 
 }

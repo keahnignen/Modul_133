@@ -20,7 +20,7 @@ class UserController
 
         if (!$s)
         {
-            return "Password must have a Spezial Character, an upper- and a lowercase letter, a number and must have 8 characters";
+            return "Password must have a Special Character, an upper- and a lowercase letter, a number and must have 8 characters";
         }
 
         $ur = new UserRepository();
@@ -29,9 +29,13 @@ class UserController
             return "Email is already Taken!";
         }
 
+        $ur->addUser($email, $password);
+
+        return self::$Registiert;
 
     }
-
+    
+    private static $Registiert = "Registerd";
 
     private static function isPasswordValid($password)
     {
@@ -42,12 +46,11 @@ class UserController
     public static function CreateUser()
     {
         $b = self::tryCreateUser($_POST['email'], $_POST['password']);
-        if ($b != true)
-        {
-            $asd = Area::Display();
 
-        }
+        $asd = Area::Display();
 
+        $asd .=   '<div class="floatClear"></div><div class="normalMessage"><h1>' . $b . "</h1></div>";
+        return $asd;
     }
 
     public static function Login()
