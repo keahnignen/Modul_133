@@ -17,7 +17,6 @@ class Area
             return "You are logged in.";
         }
 
-
         $fileName = file_get_contents('..\view\html\login.html');
 
         $file = str_replace("<!--login-->", "action='" . Dispatcher::$Login . "''", $fileName);

@@ -12,7 +12,7 @@ class Navbar
     public static function getNavbar()
     {
         $nav = new Navbar();
-        if (!GlobalVariables::$IsSessionIdSet)
+        if (!GlobalVariables::$IsSessionIdSet && !GlobalVariables::$uriFragments[0] == Dispatcher::$UserArea)
         {
             return self::getUserarea($nav->textUserArea, $nav->linkUserArea);
         }

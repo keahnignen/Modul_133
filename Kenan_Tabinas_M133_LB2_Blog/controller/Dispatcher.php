@@ -27,9 +27,16 @@ class Dispatcher
             case Dispatcher::$UserArea:
                 $content = Area::Display();
                 break;
+
             case Dispatcher::$Register:
                 $content = UserController::CreateUser();
                 break;
+            case Dispatcher::$Login:
+                $content = UserController::Login();
+                break;
+            case Dispatcher::$Logout:
+                $content = UserController::Login();
+
             default:
                 $content = Homepage::Display();
         }

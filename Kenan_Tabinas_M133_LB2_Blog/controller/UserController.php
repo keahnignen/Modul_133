@@ -8,9 +8,23 @@
 
 class UserController
 {
+
     public static function isPasswordCorrect($email, $password)
     {
-        return true;
+        $ur = new UserRepository();
+
+        $id = $ur->isPasswordCorrect($email, $password);
+
+        if ($id == null)
+        {
+            return "Password or Email is wrong";
+        }
+        else {
+            GlobalVariables::SetSessionId($id);
+            header('Location: /' . Dispatcher::$UserArea);
+            exit();
+        }
+
     }
 
     public static function tryCreateUser($email, $password)
@@ -30,6 +44,10 @@ class UserController
         }
 
         $ur->addUser($email, $password);
+
+        $id = $ur->getIdByEmail($email);
+
+        GlobalVariables::SetSessionId($id);
 
         return self::$Registiert;
 
@@ -55,7 +73,12 @@ class UserController
 
     public static function Login()
     {
+        $b = self::isPasswordCorrect($_POST['email_login'], $_POST['password_login']);
 
+        $asd = Area::Display();
+
+        $asd .=   '<div class="floatClear"></div><div class="normalMessage"><h1>' . $b . "</h1></div>";
+        return $asd;
     }
 
 
