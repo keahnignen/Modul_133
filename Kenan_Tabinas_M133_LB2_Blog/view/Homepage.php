@@ -12,7 +12,7 @@ class Homepage
 
     public static function Display()
     {
-        return "<h1>". GlobalVariables::$ApplicationName ."</h1>";
+        return "<h1>". GlobalVariables::$ApplicationName ."</h1><br><h2>Homepage</h2>";
     }
 
 }

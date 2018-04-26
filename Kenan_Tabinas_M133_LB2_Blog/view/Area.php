@@ -14,7 +14,7 @@ class Area
 
         if (GlobalVariables::$IsSessionIdSet)
         {
-            return "You are logged in.";
+            return "<br><h1>You are logged in.</h1> <br> <h2>Pretty Boring huh?</h2>";
         }
 
         $fileName = file_get_contents('..\view\html\login.html');

@@ -98,11 +98,11 @@ class UserRepository extends MainRepository
         $this->prepareStatement($query,  $binds, 'sss');
     }
 
-    public function isPasswordCorrect($email, $password)
+    public function getPassword($email)
     {
-        $query = "select id from user where email = ? and password = ?";
-        $binds = array($email, $password);
-        return $this->getOneColumn($query, $binds, 'ss');
+        $query = "select password from user where email = ?";
+        $binds = array($email);
+        return $this->getOneColumn($query, $binds, 's');
     }
 
 }

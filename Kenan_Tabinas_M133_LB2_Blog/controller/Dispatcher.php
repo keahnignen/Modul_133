@@ -35,13 +35,18 @@ class Dispatcher
                 $content = UserController::Login();
                 break;
             case Dispatcher::$Logout:
-                $content = UserController::Login();
-
+                $content = UserController::Logout();
+                break;
             default:
                 $content = Homepage::Display();
         }
 
         ViewCreator::displayPage($content);
+    }
+
+    public static function moveTo($where)
+    {
+        header('Location: /' . $where);
     }
 
 }

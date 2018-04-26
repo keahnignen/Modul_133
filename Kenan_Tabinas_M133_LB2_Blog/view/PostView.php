@@ -17,7 +17,6 @@ class PostView extends MainView
 
     public function addNormalPost()
     {
-        var_dump("sd");
         if (isset(self::$queryStrings["id"])) {
             if (is_numeric(self::$queryStrings["id"])) {
                 $repository = new PostRepository();
