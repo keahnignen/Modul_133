@@ -75,7 +75,7 @@ class UserController
 
     private static function isPasswordValid($password)
     {
-        $regex = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\w_])(?=.{8,})";
+        $regex = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\W_])(?=.{8,})";
         return preg_match("/". $regex . "/", $password);
     }
 

@@ -12,9 +12,9 @@ require_once '..\controller\PostController.php';
 require_once '..\controller\UserController.php';
 require_once '..\model\UserModel.php';
 require_once '..\model\PostModel.php';
-require_once '..\repositories\MainRepository.php';
-require_once '..\repositories\UserRepository.php';
-require_once '..\repositories\PostRepository.php';
+require_once '..\model\repositories\MainRepository.php';
+require_once '..\model\repositories\UserRepository.php';
+require_once '..\model\repositories\PostRepository.php';
 
 require_once '..\view\Navbar.php';
 require_once '..\view\Homepage.php';
