@@ -5,15 +5,16 @@ class Navbar
 
     public function __construct()
     {
-        $this->linkHeaderLogout = "href = '\\" . Dispatcher::$Logout . "'";
-        $this->linkUserArea = "href = '\\" . Dispatcher::$UserArea . "'";
+        $this->linkHeaderLogout = "href = '\\" . Singleton::getUrl()->Logout . "'";
+        $this->linkUserArea = "href = '\\" . Singleton::getUrl()->UserArea . "'";
     }
 
     public static function getNavbar()
     {
         $nav = new Navbar();
 
-        if (GlobalVariables::$IsSessionIdSet && GlobalVariables::$uriFragments[0] == Dispatcher::$UserArea)
+        //logout only if you are loggout, and on /userarea
+        if (GlobalVariables::$IsSessionIdSet  && GlobalVariables::getUriFragments(0) == Singleton::getUrl()->UserArea && GlobalVariables::getUriFragments(1) == null)
         {
             return self::getUserarea($nav->textHeaderLogout, $nav->linkHeaderLogout);
 

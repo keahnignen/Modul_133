@@ -23,6 +23,22 @@ class GalleryModel
      * @var int
      */
 
+    public $description;
+
+
     public $user_id;
+
+
+    public function __construct($id_nullIsOK = null, $name, $description, $user_id)
+    {
+        $this->id = $id_nullIsOK;
+        $this->name = $name;
+        $this->description = $description;
+        $this->user_id = $user_id;
+
+        return null;
+    }
+
+
 
 }

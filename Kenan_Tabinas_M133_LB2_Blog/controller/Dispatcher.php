@@ -9,32 +9,24 @@
 class Dispatcher
 {
 
-
-
-    public static $UserArea = "userarea";
-
-    public static $Logout = "logout";
-    public static $Login = "login";
-    public static $Register = "register";
-
     public static function dispatch() {
 
         $s = new GlobalVariables();
 
-        switch (GlobalVariables::$uriFragments[0])
+        switch (GlobalVariables::getUriFragments(0))
         {
 
-            case Dispatcher::$UserArea:
-                $content = Area::Display();
+            case Singleton::getUrl()->UserArea:
+                $content = self::Userarea();
                 break;
 
-            case Dispatcher::$Register:
+            case Singleton::getUrl()->Register:
                 $content = UserController::CreateUser();
                 break;
-            case Dispatcher::$Login:
+            case Singleton::getUrl()->Login:
                 $content = UserController::Login();
                 break;
-            case Dispatcher::$Logout:
+            case Singleton::getUrl()->Logout:
                 $content = UserController::Logout();
                 break;
             default:
@@ -47,6 +39,26 @@ class Dispatcher
     public static function moveTo($where)
     {
         header('Location: /' . $where);
+    }
+
+    public static function Userarea()
+    {
+        if (GlobalVariables::$IsSessionIdSet)
+        {
+            if (GlobalVariables::getUriFragments(1) == Singleton::getUrlSegments()->NewGallery)
+            {
+                return Singleton::gallery()->CreateNewGallery();
+            }
+
+            if (GlobalVariables::getUriFragments(1) == Singleton::getUrlSegments()->saveGallery)
+            {
+                return Singleton::gallery()->CreateNewGallery();
+            }
+
+            return CreateView::user()->DisplayLoggedIn();
+        }
+
+        return CreateView::user()->Login();
     }
 
 }

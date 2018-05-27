@@ -41,7 +41,7 @@ class PostController
 
         }
 
-        header("Location: /area/posts");
+        header("Location: ".Singleton::getUrl()->UserArea);
 
     }
 
@@ -66,7 +66,7 @@ class PostController
 
         $this->repo->updatePost($post);
 
-        header("Location: /area/posts");
+        header("Location: ".Singleton::getUrl()->UserArea);
     }
 
 }

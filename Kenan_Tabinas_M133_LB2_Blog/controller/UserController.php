@@ -11,6 +11,8 @@ class UserController
 
     public static function isPasswordCorrect($email, $password)
     {
+
+
         $ur = new UserRepository();
 
         $password_hashed = $ur->getPassword($email);
@@ -29,7 +31,7 @@ class UserController
 
         if (password_verify($password, $password_hashed[0])) {
             GlobalVariables::SetSessionId($ur->getIdByEmail($email));
-            header('Location: /' . Dispatcher::$UserArea);
+            header('Location: /' . Singleton::getUrl()->UserArea);
             exit();
         }
         else {
@@ -38,11 +40,9 @@ class UserController
 
     }
 
-
-
-
     public static function tryCreateUser($email, $password)
     {
+
 
         $s = self::isPasswordValid($password);
 
@@ -65,7 +65,7 @@ class UserController
 
         GlobalVariables::SetSessionId($id);
 
-        Dispatcher::moveTo(Dispatcher::$UserArea);
+        Dispatcher::moveTo(Singleton::getUrl()->UserArea);
 
         return self::$Registiert;
 
@@ -102,6 +102,9 @@ class UserController
 
     public static function CreateUser()
     {
+
+
+
         $b = self::BlaUser();
 
         $asd = Area::Display();

@@ -16,9 +16,20 @@ class GlobalVariables
 
     private static $idIndex = "id";
 
-    public static $uriFragments;
+    private static $uriFragments;
 
     public static $queryStrings;
+
+
+    public static function getUriFragments($index)
+    {
+        if (isset(self::$uriFragments[$index]))
+        {
+            return self::$uriFragments[$index];
+        }
+        return null;
+    }
+
 
 
 
