@@ -32,7 +32,7 @@ class PostRepository extends MainRepository
 
     private function executeStatement($query, $binds = null, $questionMarks = null)
     {
-        $stmt = $this->prepareStatement($query, $binds, $questionMarks);
+        $stmt = $this->execute($query, $binds, $questionMarks);
 
         $stmt->bind_result($id, $text, $topic_id, $user_id, $title, $date);
 
@@ -70,7 +70,7 @@ class PostRepository extends MainRepository
     {
         $binds = array($id);
         $query = "DELETE FROM post WHERE id = ?";
-        $this->prepareStatement($query, $binds, 'i');
+        $this->execute($query, $binds, 'i');
         return;
     }
 
@@ -78,7 +78,7 @@ class PostRepository extends MainRepository
     {
         $binds = array($post->title, $post->text, intval($post->id));
         $query = "UPDATE   post SET title=?, text=? WHERE id = ?";
-        $this->prepareStatement($query, $binds, 'ssi');
+        $this->execute($query, $binds, 'ssi');
         return;
     }
 
@@ -86,7 +86,7 @@ class PostRepository extends MainRepository
     {
         $binds = array($post->title, $post->text);
         $query = "INSERT INTO post (text, user_id, topic_id, title) VALUES (?, {$_SESSION["id"][0]}, 1, ?)";
-        $this->prepareStatement($query, $binds, 'ss');
+        $this->execute($query, $binds, 'ss');
         return;
     }
 

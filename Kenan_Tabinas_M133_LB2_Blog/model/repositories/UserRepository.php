@@ -18,7 +18,7 @@ class UserRepository extends MainRepository
     {
         $query = "SELECT * FROM user";
 
-        $stmt = $this->prepareStatement($query);
+        $stmt = $this->execute($query);
 
         $stmt->bind_result($id, $username, $email, $password, $isAdmin, $picture_id);
 
@@ -48,7 +48,7 @@ class UserRepository extends MainRepository
     public function isEmailTaken($email)
     {
         $query = "select email from user where email = ?";
-        $stmt = $this->prepareStatement($query, $email, 's');
+        $stmt = $this->execute($query, $email, 's');
         $stmt->bind_result($bla);
         $stmt->fetch();
 
@@ -79,7 +79,7 @@ class UserRepository extends MainRepository
     public function getEmailById($id)
     {
         $query = "SELECT email FROM `user` WHERE id = ?";
-        $stmt = $this->prepareStatement($query, $id, 's');
+        $stmt = $this->execute($query, $id, 's');
         $stmt->bind_result($email);
         $stmt->fetch();
         return $email;
@@ -95,7 +95,7 @@ class UserRepository extends MainRepository
     {
         $query = "insert into user (username, email, PASSWORD, isAdmin) VALUES (?, ?, ?, FALSE)";
         $binds = array("", $email, $password);
-        $this->prepareStatement($query,  $binds, 'sss');
+        $this->execute($query,  $binds, 'sss');
     }
 
     public function getPassword($email)

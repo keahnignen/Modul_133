@@ -11,7 +11,7 @@ class Singleton
 
     private static $url;
     private static $urlSegments;
-    private static $gallery;
+
 
 
     /**
@@ -34,14 +34,7 @@ class Singleton
         return self::$urlSegments;
     }
 
-    public static function gallery()
-    {
-        if ( is_null( self::$gallery ) )
-        {
-            self::$gallery = new GalleryView();
-        }
-        return self::$gallery;
-    }
+
 
 
 

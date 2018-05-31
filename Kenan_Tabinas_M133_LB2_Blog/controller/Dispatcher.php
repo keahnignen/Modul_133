@@ -19,7 +19,6 @@ class Dispatcher
             case Singleton::getUrl()->UserArea:
                 $content = self::Userarea();
                 break;
-
             case Singleton::getUrl()->Register:
                 $content = UserController::CreateUser();
                 break;
@@ -47,12 +46,20 @@ class Dispatcher
         {
             if (GlobalVariables::getUriFragments(1) == Singleton::getUrlSegments()->NewGallery)
             {
-                return Singleton::gallery()->CreateNewGallery();
+                return View::gallery()->CreateNewGallery();
             }
 
             if (GlobalVariables::getUriFragments(1) == Singleton::getUrlSegments()->saveGallery)
             {
-                return Singleton::gallery()->CreateNewGallery();
+                //Check if login data was valid
+                $x = Controller::gallery()->CreateNewGallery();
+                if (!($x === true))
+                {
+                    //TODO: Display current values
+                    //Display error message
+                    return View::gallery()->CreateNewGallery($x);
+                }
+                Dispatcher::moveTo(Singleton::getUrl()->UserArea);
             }
 
             return CreateView::user()->DisplayLoggedIn();

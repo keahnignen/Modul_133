@@ -40,5 +40,10 @@ class GalleryModel
     }
 
 
+    public function newGallery($Gallery)
+    {
+
+    }
+
 
 }

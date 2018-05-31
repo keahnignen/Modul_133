@@ -39,7 +39,7 @@ class MainRepository
      * @throws Exception
      */
 
-    protected function prepareStatement($query,  $binds = null, $questionMarks = null)
+    protected function execute($query, $binds = null, $questionMarks = null)
     {
 
         $stmt = $this->mysqli->prepare($query);
@@ -87,7 +87,7 @@ class MainRepository
 
     protected function getOneColumn($query, $binds = null, $questionMarks = null)
     {
-        $stmt = $this->prepareStatement($query, $binds, $questionMarks);
+        $stmt = $this->execute($query, $binds, $questionMarks);
         $stmt->bind_result($column);
 
         $columns = array();

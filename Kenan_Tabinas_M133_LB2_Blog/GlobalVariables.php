@@ -31,6 +31,13 @@ class GlobalVariables
     }
 
 
+    public function getPost($name)
+    {
+        if (!isset($_POST[$name])){
+            return null;
+        }
+        return $_POST[$name];
+    }
 
 
     public function __construct()
