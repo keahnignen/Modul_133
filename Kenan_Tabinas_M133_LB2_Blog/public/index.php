@@ -28,8 +28,7 @@ require_once '..\view\Navbar.php';
 require_once '..\view\GalleryView.php';
 require_once '..\view\Homepage.php';
 require_once '..\view\Area.php';
-require_once '..\view\view.php';
-require_once '..\view\CreateView.php';
+require_once '..\view\View.php';
 require_once '..\view\ViewCreator.php';
 require_once '..\GlobalVariables.php';
 

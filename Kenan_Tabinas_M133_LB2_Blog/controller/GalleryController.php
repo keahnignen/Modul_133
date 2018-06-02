@@ -21,7 +21,18 @@ class GalleryController
             return "Not all Fields were filled";
         }
 
-        Repository::user()->addGallery(new GalleryModel(null, $name, $description, GlobalVariables::GetSessionId()));
+        Repository::gallery()->addGallery(new GalleryModel(null, $name, $description, GlobalVariables::GetSessionId()));
         return true;
+    }
+
+    public function DisplayGallery()
+    {
+        $id = GlobalVariables::getUriFragments(1);
+
+        if (Repository::gallery()->doesGalleryExist($id))
+        {
+            return View::gallery()->DisplayGallery($id);
+        }
+        return View::FourOFour();
     }
 }

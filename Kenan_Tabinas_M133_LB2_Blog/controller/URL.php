@@ -15,6 +15,7 @@ class URL
     public $Register;
     public $NewGallery;
     public $SaveGallery;
+    public $ShowGallery;
 
 
 
@@ -26,9 +27,11 @@ class URL
         $this->Logout = Singleton::getUrlSegments()->Logout;
         $this->Login = Singleton::getUrlSegments()->Login;
         $this->SaveGallery = Singleton::getUrlSegments()->userArea . "\\" . Singleton::getUrlSegments()->saveGallery;
+        $this->ShowGallery = Singleton::getUrlSegments()->ShowGallery;
     }
 
 }
+
 
 class URLFragments {
 
@@ -38,4 +41,6 @@ class URLFragments {
     public $Login = "login";
     public $Register = "register";
     public $saveGallery = "saveGallery";
+    public $ShowGallery = "Gallery";
+    public $User = "user";
 }

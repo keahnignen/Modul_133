@@ -38,8 +38,27 @@ class Area
         $content .= "</div>";
         $content .= "</a>;";
 
+
+        $allGalleriesByUser = Repository::gallery()->getAllGalleriesByUserId(GlobalVariables::GetSessionId());
+        foreach ($allGalleriesByUser as $gallery)
+        {
+            if ($gallery instanceof GalleryModel)
+            {
+                $content .= "<a href='\\". Singleton::getUrl()->ShowGallery ."\\". $gallery->id ."'>";
+                $content .= "<div class='postBox'>";
+                $content .= "<h1>". $gallery->name ."</h1>";
+                $content .= "<h2>". $gallery->description ."</h2>";
+                $content .= "</div>";
+                $content .= "</a>;";
+            }
+
+
+        }
+
+
+
         return $content;
-        return "<br><h1>You are logged in.</h1> <br> <h2>Pretty Boring huh?</h2>";
+
     }
 
 

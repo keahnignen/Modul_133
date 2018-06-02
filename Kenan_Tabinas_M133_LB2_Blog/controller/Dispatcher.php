@@ -28,6 +28,9 @@ class Dispatcher
             case Singleton::getUrl()->Logout:
                 $content = UserController::Logout();
                 break;
+            case Singleton::getUrl()->ShowGallery:
+                $content = Controller::gallery()->DisplayGallery();
+                break;
             default:
                 $content = Homepage::Display();
         }
@@ -62,10 +65,10 @@ class Dispatcher
                 Dispatcher::moveTo(Singleton::getUrl()->UserArea);
             }
 
-            return CreateView::user()->DisplayLoggedIn();
+            return View::user()->DisplayLoggedIn();
         }
 
-        return CreateView::user()->Login();
+        return View::user()->Login();
     }
 
 }

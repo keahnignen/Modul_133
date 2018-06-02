@@ -6,6 +6,12 @@
  * Time: 18:08
  */
 
+/**
+ * OLD
+ */
+
+
+
 class PostView extends MainView
 {
 

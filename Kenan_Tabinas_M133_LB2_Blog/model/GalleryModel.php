@@ -29,6 +29,9 @@ class GalleryModel
     public $user_id;
 
 
+
+
+
     public function __construct($id_nullIsOK = null, $name, $description, $user_id)
     {
         $this->id = $id_nullIsOK;
@@ -36,7 +39,6 @@ class GalleryModel
         $this->description = $description;
         $this->user_id = $user_id;
 
-        return null;
     }
 
 

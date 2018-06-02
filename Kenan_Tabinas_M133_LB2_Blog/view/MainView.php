@@ -7,6 +7,12 @@
  * Time: 07:57
  */
 
+
+/**
+ * OLD
+ */
+
+
 class MainView {
 
     protected static $content;

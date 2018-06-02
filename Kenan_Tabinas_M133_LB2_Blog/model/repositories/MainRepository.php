@@ -32,12 +32,31 @@ class MainRepository
     }
 
     /**
+     * @param $query only one return type
+     * @param null $binds
+     * @param null $questionMarks
+     * @return bool
+     */
+
+    protected function executeIsNotNull($query, $binds = null, $questionMarks = null)
+    {
+        $stmt = $this->execute($query, $binds, $questionMarks);
+        $stmt->bind_result($bla);
+        $stmt->fetch();
+
+        return $bla != null;
+    }
+
+
+    /**
      * @param $query
      * @param null $binds
      * @param null $questionMarks
      * @return mysqli_stmt
      * @throws Exception
      */
+
+
 
     protected function execute($query, $binds = null, $questionMarks = null)
     {

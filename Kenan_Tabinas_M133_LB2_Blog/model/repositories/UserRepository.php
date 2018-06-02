@@ -14,6 +14,29 @@ class UserRepository extends MainRepository
         parent::__construct();
     }
 
+
+    private function executeStatement($query, $binds = null, $questionMarks = null)
+    {
+        $stmt = $this->execute($query, $binds, $questionMarks);
+
+        $stmt->bind_result($id, $password, $email, $isAdmin, $username);
+
+        $users = array();
+
+        while ($stmt->fetch())
+        {
+            $postModel = new UserModel();
+            $postModel->id = $id;
+            $postModel->password = $password;
+            $postModel->email = $email;
+            $postModel->isAdmin = $isAdmin;
+            $postModel->username = $username;
+            array_push($users, $postModel);
+        }
+
+        return $users;
+    }
+
     public function getAllUsers()
     {
         $query = "SELECT * FROM user";
@@ -52,7 +75,7 @@ class UserRepository extends MainRepository
         $stmt->bind_result($bla);
         $stmt->fetch();
 
-         return $bla != null;
+        return $bla != null;
     }
 
     public function getUsernameById($id)
@@ -88,7 +111,7 @@ class UserRepository extends MainRepository
     public function getIdByEmail($email)
     {
         $query = "SELECT id FROM user where email = ?";
-        return $this->getOneColumn($query, $email, 's');
+        return $this->getOneColumn($query, $email, 's')[0];
     }
 
     public function addUser($email, $password)
@@ -104,5 +127,12 @@ class UserRepository extends MainRepository
         $binds = array($email);
         return $this->getOneColumn($query, $binds, 's');
     }
+
+    public function getUserById($id)
+    {
+        $query = "select * from user where id = ?";
+        return $this->execute($query, $id, 'i');
+    }
+
 
 }
