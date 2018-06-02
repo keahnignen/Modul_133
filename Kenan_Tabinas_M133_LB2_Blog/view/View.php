@@ -38,4 +38,17 @@ class View
     {
         return "<h1>404 - Your page was not found, sorry</h1>";
     }
+
+    public static function getLinkBox($link, $text)
+    {
+        $content = "";
+
+        $content .= "<a href='\\". $link ."'>";
+        $content .= "<div class='postBox'>";
+        $content .= "<h1>". $text ."</h1>";
+        $content .= "</div>";
+        $content .= "</a>;";
+
+        return $content;
+    }
 }

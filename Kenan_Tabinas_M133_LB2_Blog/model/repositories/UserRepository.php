@@ -19,31 +19,7 @@ class UserRepository extends MainRepository
     {
         $stmt = $this->execute($query, $binds, $questionMarks);
 
-        $stmt->bind_result($id, $password, $email, $isAdmin, $username);
-
-        $users = array();
-
-        while ($stmt->fetch())
-        {
-            $postModel = new UserModel();
-            $postModel->id = $id;
-            $postModel->password = $password;
-            $postModel->email = $email;
-            $postModel->isAdmin = $isAdmin;
-            $postModel->username = $username;
-            array_push($users, $postModel);
-        }
-
-        return $users;
-    }
-
-    public function getAllUsers()
-    {
-        $query = "SELECT * FROM user";
-
-        $stmt = $this->execute($query);
-
-        $stmt->bind_result($id, $username, $email, $password, $isAdmin, $picture_id);
+        $stmt->bind_result($id, $username, $email, $password, $isAdmin);
 
         $users = array();
 
@@ -55,7 +31,30 @@ class UserRepository extends MainRepository
             $userModel->email = $email;
             $userModel->password = $password;
             $userModel->isAdmin = $isAdmin;
-            $userModel->picture_id = $picture_id;
+            array_push($users, $userModel);
+        }
+
+        return $users;
+    }
+
+    public function getAllUsers()
+    {
+        $query = "SELECT * FROM user";
+
+        $stmt = $this->execute($query);
+
+        $stmt->bind_result($id, $username, $email, $password, $isAdmin);
+
+        $users = array();
+
+        while ($stmt->fetch())
+        {
+            $userModel = new UserModel();
+            $userModel->id = $id;
+            $userModel->username = $username;
+            $userModel->email = $email;
+            $userModel->password = $password;
+            $userModel->isAdmin = $isAdmin;
             array_push($users, $userModel);
         }
 
@@ -131,7 +130,7 @@ class UserRepository extends MainRepository
     public function getUserById($id)
     {
         $query = "select * from user where id = ?";
-        return $this->execute($query, $id, 'i');
+        return $this->executeStatement($query, $id, 'i')[0];
     }
 
 

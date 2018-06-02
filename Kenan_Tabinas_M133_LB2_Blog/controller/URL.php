@@ -30,6 +30,11 @@ class URL
         $this->ShowGallery = Singleton::getUrlSegments()->ShowGallery;
     }
 
+    public function AddPicture($gallery_id)
+    {
+        return $this->ShowGallery . "\\" . $gallery_id . "\\" . Singleton::getUrlSegments()->AddPicture;
+    }
+
 }
 
 
@@ -41,6 +46,7 @@ class URLFragments {
     public $Login = "login";
     public $Register = "register";
     public $saveGallery = "saveGallery";
-    public $ShowGallery = "Gallery";
+    public $ShowGallery = "gallery";
     public $User = "user";
+    public $AddPicture = "addPicture";
 }

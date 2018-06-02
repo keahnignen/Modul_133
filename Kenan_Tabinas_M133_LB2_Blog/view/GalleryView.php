@@ -26,16 +26,44 @@ class GalleryView
         return $content;
     }
 
-    public function DisplayGallery($id)
+    public function DisplayGallery($gallery_id)
     {
 
-        $gallery = Repository::gallery()->getGalleryById($id);
-        $user = Repository::user()->getUserById($id);
+
+        $gallery = Repository::gallery()->getGalleryById($gallery_id);
+
+
+
         $content = "";
         if (!($gallery instanceof GalleryModel)) throw new Exception("Own Exception: inctance of failed");
+        $user = Repository::user()->getUserById($gallery->user_id);
+
+
+        if (!($user instanceof UserModel)) throw new Exception("Own Exception: inctance of failed");
 
         $content .= "<h1>" .  $gallery->name . "</h1>";
-        $content .= "<a href='". Singleton::getUrlSegments()->User . $gallery->id ."'><h2>" .  $gallery->name . "</h2></a>";
+
+
+        //TODO: Change in username
+        //TODO: Attention: Two <br><br>s
+        $content .= "<a href='\\". Singleton::getUrlSegments()->User . "\\" .  $gallery->user_id ."'><h2>" .  $user->email . "</h2></a><br><br>";
+
+
+
+        if ($gallery->user_id == GlobalVariables::GetSessionId())
+        {
+            $content .=  View::getLinkBox(Singleton::getUrl()->AddPicture($gallery_id), "Add Picture");
+        }
+
+        foreach (Repository::picture()->getAllPicturesByGalleryId($gallery_id) as $picture)
+        {
+            if (!($picture instanceof PictureModel)) throw new Exception("Own Exception: inctance of failed");
+
+            $content .= "<div class='postBox'>";
+            $content .= "<img src='". $picture->path ."'/>";
+            $content .= "</div>";
+        }
+
         return $content;
     }
 

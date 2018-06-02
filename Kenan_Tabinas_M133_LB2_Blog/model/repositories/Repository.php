@@ -9,7 +9,7 @@
 class Repository
 {
     private static $gallery;
-    private static $user;
+
 
     public static function gallery()
     {
@@ -21,6 +21,7 @@ class Repository
         return self::$gallery;
     }
 
+    private static $user;
     public static function user()
     {
         if ( is_null( self::$user ) )
@@ -29,5 +30,16 @@ class Repository
             self::$user = new UserRepository();
         }
         return self::$user;
+    }
+
+    private static $picture;
+    public static function picture()
+    {
+        if ( is_null( self::$picture ) )
+        {
+            require_once "PictureRepository.php";
+            self::$picture = new PictureRepository();
+        }
+        return self::$picture;
     }
 }

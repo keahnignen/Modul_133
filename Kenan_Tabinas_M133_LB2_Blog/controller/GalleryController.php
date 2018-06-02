@@ -31,6 +31,11 @@ class GalleryController
 
         if (Repository::gallery()->doesGalleryExist($id))
         {
+            if (GlobalVariables::getUriFragments(2) == Singleton::getUrlSegments()->AddPicture)
+            {
+                return View::gallery()->DisplayGallery($id);
+            }
+
             return View::gallery()->DisplayGallery($id);
         }
         return View::FourOFour();
