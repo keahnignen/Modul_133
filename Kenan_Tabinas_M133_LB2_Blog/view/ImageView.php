@@ -9,7 +9,7 @@
 class ImageView
 {
 
-    public function DisplayPicture()
+    public function DisplayImage()
     {
 
         $filename = GlobalVariables::getUriFragments(1);
@@ -20,7 +20,7 @@ class ImageView
             Dispatcher::moveTo(Singleton::getUrl()->Homepage);
         }
 
-        $path = "..\\Images\\" . $filename;
+        $path = GlobalVariables::$ImagePath . $filename;
 
         if (!file_exists($path))
         {

@@ -10,6 +10,8 @@
 class GlobalVariables
 {
 
+    public static $ImagePath = "..\\..\\..\\Images\\";
+
     public static $ApplicationName = "Images[]";
 
     public static $HtmlContent = "<!--THIS_WILL_BE_REPLACED-->";

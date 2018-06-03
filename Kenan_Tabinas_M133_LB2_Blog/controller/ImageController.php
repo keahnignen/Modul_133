@@ -37,8 +37,8 @@ class ImageController
         $filename = $imageHash . "." . $extension;
         $thumbnailName = $thumbnailHash . "." . $extension;
 
-        $targetPath = "..\\Images\\" .  $filename;
-        $thumbnailPath = "..\\Images\\" .  $thumbnailName;
+        $targetPath = GlobalVariables::$ImagePath .  $filename;
+        $thumbnailPath = GlobalVariables::$ImagePath .  $thumbnailName;
 
         if (file_exists($targetPath))
         {

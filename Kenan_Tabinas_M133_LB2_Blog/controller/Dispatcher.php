@@ -34,7 +34,7 @@ class Dispatcher
                 break;
 
             case Singleton::getUrlSegments()->image;
-                View::picture()->DisplayPicture();
+                View::picture()->DisplayImage();
 
                 break;
             default:
