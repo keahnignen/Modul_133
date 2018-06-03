@@ -32,7 +32,7 @@ class MainRepository
     }
 
     /**
-     * @param $query only one return type
+     * @param $query string only one return type
      * @param null $binds
      * @param null $questionMarks
      * @return bool
@@ -64,6 +64,8 @@ class MainRepository
         $stmt = $this->mysqli->prepare($query);
 
 
+        var_dump($query);
+
 
         if ($stmt == false) throw new Exception("Db prepare error");
 
@@ -89,7 +91,7 @@ class MainRepository
             //$stmt->bind_param($questionMarks, $binds);
         }
 
-        if (!$stmt->execute()) throw new Exception("Execution error - Throwed Exception");
+        if (!$stmt->execute()) throw new Exception("Own Exception: Execution error - Throwed Exception");
 
         return $stmt;
     }

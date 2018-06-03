@@ -50,6 +50,8 @@ h1, h2 {
     padding: 2.5vw 5.25vw 2.5vw 5.25vw;
     float: left;
     margin: 1vw 1vw 1vw 1vw;
+    width: 200px;
+    overflow: hidden;
 }
 
 .erorrMessage {
@@ -77,3 +79,5 @@ textarea {
     float: none;
     clear: left;
 }
+
+/* From Bums */

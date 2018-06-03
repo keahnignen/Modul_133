@@ -49,6 +49,16 @@ class GalleryView
         $content .= "<a href='\\". Singleton::getUrlSegments()->User . "\\" .  $gallery->user_id ."'><h2>" .  $user->email . "</h2></a><br><br>";
 
 
+        if ($gallery->user_id == GlobalVariables::GetSessionId())
+        {
+            $content .=  View::getLinkBox(Singleton::getUrl()->deleteGallery($gallery_id), "Edit Gallery");
+        }
+
+
+        if ($gallery->user_id == GlobalVariables::GetSessionId())
+        {
+            $content .=  View::getLinkBox(Singleton::getUrl()->deleteGallery($gallery_id), "Delete Gallery");
+        }
 
         if ($gallery->user_id == GlobalVariables::GetSessionId())
         {
@@ -74,6 +84,18 @@ class GalleryView
 
         $content = str_replace("<!--LINK-->", "/".$link, $content);
         return $content;
+    }
+
+    public function DeleteGallery($gallery_id)
+    {
+
+        $fileName = file_get_contents('..\view\html\area\deleteUser.html');
+
+        $file = str_replace("<!--login-->", "action='\\" . Singleton::getUrl()->deleteGallery($gallery_id) . "'", $fileName);
+
+        return $file;
+
+
     }
 
 }

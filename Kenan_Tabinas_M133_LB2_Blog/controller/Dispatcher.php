@@ -58,6 +58,17 @@ class Dispatcher
                 return View::gallery()->CreateNewGallery();
             }
 
+
+            if (GlobalVariables::getUriFragments(1) == Singleton::getUrlSegments()->deleteUser)
+            {
+                return Controller::user()->deleteUser();
+            }
+
+            if (GlobalVariables::getUriFragments(1) == Singleton::getUrlSegments()->deleteGallery)
+            {
+                return Controller::gallery()->DeleteGallery();
+            }
+
             if (GlobalVariables::getUriFragments(1) == Singleton::getUrlSegments()->saveGallery)
             {
                 //Check if login data was valid

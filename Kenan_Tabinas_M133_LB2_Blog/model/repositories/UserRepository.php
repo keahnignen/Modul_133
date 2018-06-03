@@ -133,5 +133,15 @@ class UserRepository extends MainRepository
         return $this->executeStatement($query, $id, 'i')[0];
     }
 
+    public function deleteUserId($id)
+    {
+        foreach (Repository::gallery()->getAllGalleriesByUserId($id) as $galleries)
+        {
+            Repository::gallery()->deleteGallery($galleries->id, $id);
+        }
+
+        $query = "delete from user where id = ?";
+        return $this->execute($query, $id, 'i');
+    }
 
 }

@@ -9,13 +9,6 @@
 class Area
 {
 
-    public static function Display()
-    {
-
-
-
-    }
-
     public function Login()
     {
         $fileName = file_get_contents('..\view\html\login.html');
@@ -39,6 +32,10 @@ class Area
         $content .= "</a>;";
 
 
+        $content .=  View::getLinkBox(Singleton::getUrl()->deleteUser, "Delete User");
+
+        $content .= "<h1>Galleries</h1><br><br>";
+
         $allGalleriesByUser = Repository::gallery()->getAllGalleriesByUserId(GlobalVariables::GetSessionId());
         foreach ($allGalleriesByUser as $gallery)
         {
@@ -61,7 +58,16 @@ class Area
 
     }
 
+    public function DeleteUser()
+    {
+        $fileName = file_get_contents('..\view\html\area\deleteUser.html');
 
+        $file = str_replace("<!--login-->", "action='\\" . Singleton::getUrl()->deleteUser . "'", $fileName);
+
+        return $file;
+
+
+    }
 
 
 }

@@ -64,7 +64,12 @@ class GalleryRepository extends MainRepository
         return $this->executeIsNotNull($query, $id, "i");
     }
 
-
+    public function deleteGallery($id, $user_id)
+    {
+        Repository::picture()->deleteImagesFromGallery($id);
+        $query = "DELETE FROM gallery where id = ? and user_id = ?";
+        return $this->execute($query, array($id, $user_id), "ii");
+    }
 
 
 }

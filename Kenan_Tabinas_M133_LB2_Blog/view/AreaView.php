@@ -31,7 +31,7 @@ class AreaView extends MainView
 
                     if (isset($_POST['password_login']) && isset($_POST['email_login']))
                     {
-                        if ($controller->isPasswordCorrect($_POST['email_login'], $_POST['password_login']))
+                        if ($controller->tryToLogin($_POST['email_login'], $_POST['password_login']))
                         {
                             $repo = new UserRepository();
                             $_SESSION['id'] = $repo->getIdByEmail($_POST['email_login']);

@@ -50,5 +50,36 @@ class GalleryController
         return View::ErrorMessage("Error 404 - We didn't found your page");
     }
 
+    public function DeleteGallery()
+    {
+
+
+        $gallery_id = GlobalVariables::getUriFragments(2);
+
+        if (!Repository::gallery()->doesGalleryExist($gallery_id)) return "No rights to do this";
+
+
+        if (isset($_POST['password']) && isset($_POST["email"]))
+        {
+
+            if (Controller::user()->isPasswordCorrect($_POST['email'], $_POST['password']))
+            {
+
+                $user_id = GlobalVariables::GetSessionId();
+                Repository::gallery()->deleteGallery($gallery_id, $user_id);
+
+                Dispatcher::moveTo(Singleton::getUrlSegments()->userArea);
+
+
+            }
+            return View::gallery()->DeleteGallery($gallery_id);
+        }
+        else {
+
+            return View::gallery()->DeleteGallery($gallery_id);
+        }
+
+    }
+
 
 }

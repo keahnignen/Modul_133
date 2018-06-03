@@ -45,6 +45,12 @@ class ImageRepository extends MainRepository
         return $this->executeQuery($query, $id, "i");
     }
 
+    public function deleteImagesFromGallery($gallery_id)
+    {
+        $query = "Delete from picture where gallery_id = ?";
+        return $this->execute($query, $gallery_id, "i");
+    }
+
 
 
 }

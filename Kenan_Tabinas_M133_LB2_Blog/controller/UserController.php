@@ -9,28 +9,14 @@
 class UserController
 {
 
-    public static function isPasswordCorrect($email, $password)
+    public static function tryToLogin($email, $password)
     {
+        $x = self::isPasswordCorrect($email, $password);
 
+        if (!is_bool($x)) return $x;
 
-        $ur = new UserRepository();
-
-        $password_hashed = $ur->getPassword($email);
-
-        if ($password_hashed == null)
-        {
-            return "Email is not registert";
-        }
-
-        $size = sizeof($password_hashed);
-
-        if ($size != 1)
-        {
-            throw new Exception("This email is registert to more than one user. We are sorry. ");
-        }
-
-        if (password_verify($password, $password_hashed[0])) {
-            GlobalVariables::SetSessionId($ur->getIdByEmail($email));
+        if ($x) {
+            GlobalVariables::SetSessionId(Repository::user()->getIdByEmail($email));
             header('Location: /' . Singleton::getUrl()->UserArea);
             exit();
         }
@@ -39,6 +25,32 @@ class UserController
         }
 
     }
+
+    public static function isPasswordCorrect($email, $password)
+    {
+
+
+        $password_hashed = Repository::user()->getPassword($email);
+
+
+        if ($password_hashed == null)
+        {
+            return "Email is not registert";
+        }
+
+
+        $size = sizeof($password_hashed);
+
+        if ($size != 1)
+        {
+
+            throw new Exception("This email is registert to more than one user. We are sorry. ");
+        }
+
+
+        return password_verify($password, $password_hashed[0]);
+    }
+
 
     public static function tryCreateUser($email, $password)
     {
@@ -115,10 +127,14 @@ class UserController
 
     public static function Login()
     {
-        $b = self::isPasswordCorrect($_POST['email_login'], $_POST['password_login']);
 
-        $asd = Area::Display();
+        if (!isset($_POST['email_login']) || !isset($_POST["password_login"])) Dispatcher::moveTo(Singleton::getUrl()->UserArea);
 
+
+        $b = self::tryToLogin($_POST['email_login'], $_POST['password_login']);
+
+
+        $asd = View::user()->Login();
         $asd .=   '<div class="floatClear"></div><div class="normalMessage"><h1>' . $b . "</h1></div>";
         return $asd;
     }
@@ -129,6 +145,31 @@ class UserController
         session_destroy();
         Dispatcher::moveTo("");
         die();
+    }
+
+    public function deleteUser()
+    {
+
+        $user_id = GlobalVariables::GetSessionId();
+
+        if (isset($_POST['password']) && isset($_POST["email"]))
+        {
+
+            if (self::isPasswordCorrect($_POST['email'], $_POST['password']))
+            {
+
+                Repository::user()->deleteUserId($user_id);
+                Dispatcher::moveTo(Singleton::getUrl()->Logout);
+
+
+            }
+            return View::user()->DeleteUser();
+        }
+        else {
+            return View::user()->DeleteUser();
+        }
+
+
     }
 
 

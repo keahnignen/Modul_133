@@ -17,6 +17,7 @@ class URL
     public $SaveGallery;
     public $ShowGallery;
     public $Homepage = "";
+    public $deleteUser;
 
 
     public function __construct()
@@ -28,6 +29,7 @@ class URL
         $this->Login = Singleton::getUrlSegments()->Login;
         $this->SaveGallery = Singleton::getUrlSegments()->userArea . "\\" . Singleton::getUrlSegments()->saveGallery;
         $this->ShowGallery = Singleton::getUrlSegments()->ShowGallery;
+        $this->deleteUser = $this->UserArea . "\\" . Singleton::getUrlSegments()->deleteUser;
     }
 
     public function addImage($gallery_id)
@@ -45,6 +47,11 @@ class URL
         return Singleton::getUrlSegments()->image . "\\" . $path;
     }
 
+    public function deleteGallery($gallery_id)
+    {
+        return $this->UserArea .  "\\" . Singleton::getUrlSegments()->deleteGallery . "\\" . $gallery_id;
+    }
+
 }
 
 
@@ -59,6 +66,16 @@ class URLFragments {
     public $saveGallery = "saveGallery";
     public $ShowGallery = "gallery";
     public $User = "user";
-    public $addImage = "addImage";
-    public $image = "image";
+    public $addImage;
+    public $image = "picture";
+
+    public $deleteGallery = "deleteGallery";
+    public $deleteUser = "deleteUser";
+
+    public function __construct()
+    {
+        $this->addImage = "add" . $this->image;
+
+    }
+
 }
