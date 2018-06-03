@@ -12,6 +12,7 @@ class Dispatcher
     public static function dispatch() {
 
         $s = new GlobalVariables();
+        $content ="";
 
         switch (GlobalVariables::getUriFragments(0))
         {
@@ -26,10 +27,15 @@ class Dispatcher
                 $content = UserController::Login();
                 break;
             case Singleton::getUrl()->Logout:
-                $content = UserController::Logout();
+                UserController::Logout();
                 break;
             case Singleton::getUrl()->ShowGallery:
                 $content = Controller::gallery()->DisplayGallery();
+                break;
+
+            case Singleton::getUrlSegments()->image;
+                View::picture()->DisplayPicture();
+
                 break;
             default:
                 $content = Homepage::Display();

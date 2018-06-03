@@ -52,18 +52,27 @@ class GalleryView
 
         if ($gallery->user_id == GlobalVariables::GetSessionId())
         {
-            $content .=  View::getLinkBox(Singleton::getUrl()->AddPicture($gallery_id), "Add Picture");
+            $content .=  View::getLinkBox(Singleton::getUrl()->addImage($gallery_id), "Add Image");
         }
 
-        foreach (Repository::picture()->getAllPicturesByGalleryId($gallery_id) as $picture)
+        foreach (Repository::picture()->getAllPicturesByGalleryId($gallery_id) as $image)
         {
-            if (!($picture instanceof PictureModel)) throw new Exception("Own Exception: inctance of failed");
+            if (!($image instanceof ImageModel)) throw new Exception("Own Exception: inctance of failed");
 
-            $content .= "<div class='postBox'>";
-            $content .= "<img src='". $picture->path ."'/>";
-            $content .= "</div>";
+            $content .= View::picture()->DisplayImageAsBox($image);
+
         }
 
+        return $content;
+    }
+
+    public function AddGallery($galleryId)
+    {
+        $content = file_get_contents('..\view\html\area\addPicture.html');
+
+        $link = Singleton::getUrl()->addImage($galleryId);
+
+        $content = str_replace("<!--LINK-->", "/".$link, $content);
         return $content;
     }
 

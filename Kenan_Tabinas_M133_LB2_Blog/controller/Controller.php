@@ -30,4 +30,16 @@ class Controller
         }
         return self::$gallery;
     }
+
+    private static $image;
+
+    public static function picture()
+    {
+        if ( is_null( self::$image ) )
+        {
+            require_once "ImageController.php";
+            self::$image = new ImageController();
+        }
+        return self::$image;
+    }
 }

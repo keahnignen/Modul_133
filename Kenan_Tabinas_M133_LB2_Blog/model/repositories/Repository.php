@@ -32,14 +32,14 @@ class Repository
         return self::$user;
     }
 
-    private static $picture;
+    private static $image;
     public static function picture()
     {
-        if ( is_null( self::$picture ) )
+        if ( is_null( self::$image ) )
         {
-            require_once "PictureRepository.php";
-            self::$picture = new PictureRepository();
+            require_once "ImageRepository.php";
+            self::$image = new ImageRepository();
         }
-        return self::$picture;
+        return self::$image;
     }
 }

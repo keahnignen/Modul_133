@@ -16,7 +16,7 @@ class URL
     public $NewGallery;
     public $SaveGallery;
     public $ShowGallery;
-
+    public $Homepage = "";
 
 
     public function __construct()
@@ -30,12 +30,23 @@ class URL
         $this->ShowGallery = Singleton::getUrlSegments()->ShowGallery;
     }
 
-    public function AddPicture($gallery_id)
+    public function addImage($gallery_id)
     {
-        return $this->ShowGallery . "\\" . $gallery_id . "\\" . Singleton::getUrlSegments()->AddPicture;
+        return $this->ShowGallery($gallery_id) . "\\" . Singleton::getUrlSegments()->addImage;
+    }
+
+    public function ShowGallery($gallery_id)
+    {
+        return $this->ShowGallery . "\\" . $gallery_id;
+    }
+
+    public function getImagePath($path)
+    {
+        return Singleton::getUrlSegments()->image . "\\" . $path;
     }
 
 }
+
 
 
 class URLFragments {
@@ -48,5 +59,6 @@ class URLFragments {
     public $saveGallery = "saveGallery";
     public $ShowGallery = "gallery";
     public $User = "user";
-    public $AddPicture = "addPicture";
+    public $addImage = "addImage";
+    public $image = "image";
 }

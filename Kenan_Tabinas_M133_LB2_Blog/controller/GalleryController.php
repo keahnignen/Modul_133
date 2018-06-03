@@ -31,13 +31,24 @@ class GalleryController
 
         if (Repository::gallery()->doesGalleryExist($id))
         {
-            if (GlobalVariables::getUriFragments(2) == Singleton::getUrlSegments()->AddPicture)
+            if (GlobalVariables::getUriFragments(2) == Singleton::getUrlSegments()->addImage)
             {
-                return View::gallery()->DisplayGallery($id);
+                $index = "file";
+
+
+                if (!array_key_exists($index, $_FILES))
+                {
+                    return View::gallery()->AddGallery($id);
+                }
+
+                Controller::picture()->AddPicture($index, $id);
+
             }
 
             return View::gallery()->DisplayGallery($id);
         }
-        return View::FourOFour();
+        return View::ErrorMessage("Error 404 - We didn't found your page");
     }
+
+
 }

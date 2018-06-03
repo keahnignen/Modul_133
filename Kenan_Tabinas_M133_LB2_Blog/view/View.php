@@ -34,9 +34,9 @@ class View
         return self::$gallery;
     }
 
-    public static function FourOFour()
+    public static function ErrorMessage($text)
     {
-        return "<h1>404 - Your page was not found, sorry</h1>";
+        return "<h1>" .  $text . "</h1>";
     }
 
     public static function getLinkBox($link, $text)
@@ -50,5 +50,17 @@ class View
         $content .= "</a>;";
 
         return $content;
+    }
+
+    private static $image;
+
+    public static function picture()
+    {
+        if ( is_null( self::$image ) )
+        {
+            require_once "ImageView.php";
+            self::$image = new ImageView();
+        }
+        return self::$image;
     }
 }

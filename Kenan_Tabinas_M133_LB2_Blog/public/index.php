@@ -19,6 +19,8 @@ require_once '..\Singleton.php';
 require_once '..\model\UserModel.php';
 require_once '..\model\PostModel.php';
 require_once '..\model\GalleryModel.php';
+require_once '..\model\ImageModel.php';
+
 require_once '..\model\repositories\MainRepository.php';
 require_once '..\model\repositories\UserRepository.php';
 require_once '..\model\repositories\PostRepository.php';
