@@ -23,6 +23,9 @@ class GlobalVariables
     public static $queryStrings;
 
 
+
+
+
     public static function getUriFragments($index)
     {
         if (isset(self::$uriFragments[$index]))
@@ -33,7 +36,7 @@ class GlobalVariables
     }
 
 
-    public function getPost($name)
+    public static function getPost($name)
     {
         if (!isset($_POST[$name])){
             return null;
@@ -47,6 +50,10 @@ class GlobalVariables
         self::$IsSessionIdSet = (isset($_SESSION[self::$idIndex]) && $_SESSION[self::$idIndex] != null);
         self::initQueryString();
         self::initUriFragments();
+        if (!file_exists(GlobalVariables::$ImagePath))
+        {
+            mkdir(GlobalVariables::$ImagePath);
+        }
     }
 
     public static $IsSessionIdSet;

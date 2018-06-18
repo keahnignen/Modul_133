@@ -9,7 +9,7 @@
 class Area
 {
 
-    public function Login()
+    public static function Login()
     {
         $fileName = file_get_contents('..\view\html\login.html');
 

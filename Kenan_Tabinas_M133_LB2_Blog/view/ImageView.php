@@ -52,8 +52,8 @@ class ImageView
     public function DisplayImageAsBox($imageModel)
     {
         $content = "";
-        $content .= "<div class='userBox'>";
-        $content .= "<img src='/". Singleton::getUrl()->getImagePath($imageModel->path_thumbnail)  ."' class='img-thumbnail'/>";
+        $content .= "<div class='imageBox'>";
+        $content .= "<img src='/". Singleton::getUrl()->getImagePath($imageModel->path_thumbnail)  ."' class='img-thumbnail'/ height=\"300vw\" width=\"300vw\">";
         $content .= "</div>";
         return $content;
     }

@@ -48,7 +48,7 @@ class ImageController
         move_uploaded_file($_FILES[$index]["tmp_name"], $targetPath);
 
 
-        $this->make_thumb($targetPath, $thumbnailPath, 200);
+        $this->make_thumb($targetPath, $thumbnailPath, 500);
 
         $picture = new ImageModel($filename, $gallery_id, $thumbnailName);
         Repository::picture()->addPicture($picture);

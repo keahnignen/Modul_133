@@ -119,7 +119,7 @@ class UserController
 
         $b = self::BlaUser();
 
-        $asd = Area::Display();
+        $asd = Area::Login();
 
         $asd .=   '<div class="floatClear"></div><div class="normalMessage"><h1>' . $b . "</h1></div>";
         return $asd;

@@ -80,4 +80,11 @@ textarea {
     clear: left;
 }
 
+
+.imageBox{
+    float: left;
+    margin: 1vw 1vw 1vw 1vw;
+    overflow: hidden;
+}
+
 /* From Bums */
