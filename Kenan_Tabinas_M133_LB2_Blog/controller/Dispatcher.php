@@ -57,8 +57,7 @@ class Dispatcher
             {
                 return View::gallery()->CreateNewGallery();
             }
-
-
+            
             if (GlobalVariables::getUriFragments(1) == Singleton::getUrlSegments()->deleteUser)
             {
                 return Controller::user()->deleteUser();
