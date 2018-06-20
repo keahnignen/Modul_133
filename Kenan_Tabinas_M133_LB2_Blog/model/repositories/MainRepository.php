@@ -79,6 +79,8 @@ class MainRepository
 
             $parameters = array();
 
+
+
             array_push($parameters, $questionMarks);
 
             foreach ($binds as $bind)
