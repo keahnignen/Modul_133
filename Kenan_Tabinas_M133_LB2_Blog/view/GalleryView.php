@@ -51,7 +51,7 @@ class GalleryView
 
         if ($gallery->user_id == GlobalVariables::GetSessionId())
         {
-            $content .=  View::getLinkBox(Singleton::getUrl()->deleteGallery($gallery_id), "Edit Gallery");
+            $content .=  View::getLinkBox(Singleton::getUrl()->editGallery($gallery_id), "Edit Gallery");
         }
 
 

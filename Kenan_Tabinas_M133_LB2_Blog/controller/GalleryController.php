@@ -81,5 +81,9 @@ class GalleryController
 
     }
 
+    public function EditGallery()
+    {
+    }
+
 
 }

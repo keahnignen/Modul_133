@@ -52,6 +52,11 @@ class URL
         return $this->UserArea .  "\\" . Singleton::getUrlSegments()->deleteGallery . "\\" . $gallery_id;
     }
 
+    public function editGallery($gallery_id)
+    {
+        return $this->UserArea .  "\\" . Singleton::getUrlSegments()->editGallery . "\\" . $gallery_id;
+    }
+
 }
 
 
@@ -68,6 +73,7 @@ class URLFragments {
     public $User = "user";
     public $addImage;
     public $image = "picture";
+    public $editGallery = "editGallery";
 
     public $deleteGallery = "deleteGallery";
     public $deleteUser = "deleteUser";

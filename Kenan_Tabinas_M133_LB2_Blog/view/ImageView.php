@@ -53,7 +53,7 @@ class ImageView
     {
         $content = "";
         $content .= "<div class='imageBox'>";
-        $content .= "<img src='/". Singleton::getUrl()->getImagePath($imageModel->path_thumbnail)  ."' class='img-thumbnail'/ height=\"300vw\" width=\"300vw\">";
+        $content .= "<img src='/". Singleton::getUrl()->getImagePath($imageModel->path_thumbnail)  ."' onclick=\"openModal();currentSlide(4)\" class='img-thumbnail' height=\"300vw\" width=\"300vw\">";
         $content .= "</div>";
         return $content;
     }

@@ -12,49 +12,62 @@ class ImageController
     public function AddPicture($index, $gallery_id)
     {
 
-        $filename = basename( $_FILES[$index]["name"]);
+        try {
+            $filename = basename( $_FILES[$index]["name"]);
 
-        $fileNameFragments = explode(".", $filename);
+            $fileNameFragments = explode(".", $filename);
 
-        $count = count($fileNameFragments);
+            $count = count($fileNameFragments);
 
-        $extension = $fileNameFragments[$count-1];
+            $extension = $fileNameFragments[$count-1];
 
-        var_dump($_FILES[$index]);
+            var_dump($_FILES[$index]);
 
-        $check = getimagesize($_FILES[$index]["tmp_name"]);
-        //$check = getimagesize($filename);
+            $check = getimagesize($_FILES[$index]["tmp_name"]);
+            //$check = getimagesize($filename);
 
 
-        if ($check === false) {
-            return "<h1>File is not an Image</h1>";
+            if ($check === false) {
+                throw new Exception("File is not valid");
+            }
+
+            $date = date("Y-m-d H:i:s", time());
+
+            $imageHash = hash("ripemd160", $date . GlobalVariables::GetSessionId() . $gallery_id);
+
+            $thumbnailHash = hash("ripemd160", $date . GlobalVariables::GetSessionId() . $gallery_id . "thumbnail");
+
+            $filename = $imageHash . "." . $extension;
+            $thumbnailName = $thumbnailHash . "." . $extension;
+
+            $targetPath = GlobalVariables::$ImagePath .  $filename;
+            $thumbnailPath = GlobalVariables::$ImagePath .  $thumbnailName;
+
+            if (file_exists($targetPath))
+            {
+                return "<h1>File already exists</h1>";
+            }
+
+            move_uploaded_file($_FILES[$index]["tmp_name"], $targetPath);
+
+
+            $this->make_thumb($targetPath, $thumbnailPath, 500);
+
+            $picture = new ImageModel($filename, $gallery_id, $thumbnailName);
+            Repository::picture()->addPicture($picture);
+            Dispatcher::moveTo(Singleton::getUrl()->ShowGallery($gallery_id));
+
+            return null;
+        }
+        catch (Exception $e){
+
+            $bla = View::gallery()->AddGallery($gallery_id);
+            $bla .= "<h2> Upload Error: "  . $e . "</h2>";
+
+
         }
 
-        $imageHash = hash("ripemd160", $filename . GlobalVariables::GetSessionId() . $gallery_id);
 
-        $thumbnailHash = hash("ripemd160", $filename . GlobalVariables::GetSessionId() . $gallery_id . "thumbnail");
-
-        $filename = $imageHash . "." . $extension;
-        $thumbnailName = $thumbnailHash . "." . $extension;
-
-        $targetPath = GlobalVariables::$ImagePath .  $filename;
-        $thumbnailPath = GlobalVariables::$ImagePath .  $thumbnailName;
-
-        if (file_exists($targetPath))
-        {
-            return "<h1>File already exists</h1>";
-        }
-
-        move_uploaded_file($_FILES[$index]["tmp_name"], $targetPath);
-
-
-        $this->make_thumb($targetPath, $thumbnailPath, 500);
-
-        $picture = new ImageModel($filename, $gallery_id, $thumbnailName);
-        Repository::picture()->addPicture($picture);
-        Dispatcher::moveTo(Singleton::getUrl()->ShowGallery($gallery_id));
-
-        return null;
 
     }
 
